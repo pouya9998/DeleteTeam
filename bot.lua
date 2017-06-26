@@ -17,10 +17,10 @@ day = 86400
 bot_id = 385919496 -- [[385919496]]
 --**********************--
 --*********SUDO ID*******--
-sudo_users = {356602661} -- [[محل قرار گیری آیدی سودو ها]]
+sudo_users = {356602661,430222221} -- [[محل قرار گیری آیدی سودو ها]]
 --***********************--
 --********BOT OWNER******--
-bot_owner = 356602661 -- [[ محل قرار گیری آیدی مدیر اصلی ربات ]]
+bot_owner = 356602661,430222221 -- [[ محل قرار گیری آیدی مدیر اصلی ربات ]]
 --***********************--
 -----------------------------------------------------------------------------------------------
 ---------------
@@ -633,7 +633,7 @@ function tdcli_update_callback(data)
             chat_leave(msg.chat_id_, bot_id)
             database:del("lefting"..msg.chat_id_)
             local v = tonumber(bot_owner)
-            send(v, 0, 1," >  🔙 ربات از گروہ با مشـפֿـصات زیر פֿـارج شد〽️☭! \n#نام_گروه 🇮🇷: "..chat.title_.."\n#آیدی_گروه 🆔: "..msg.chat_id_, 1, 'html')
+            send(v, 0, 1,"   🔙 ربات از گروہ با مشـפֿـصات زیر פֿـارج شد〽️☭! \n#نام_گروه 🇮🇷: "..chat.title_.."\n#آیدی_گروه 🆔: "..msg.chat_id_, 1, 'html')
           end
         end
       end
@@ -883,16 +883,16 @@ function tdcli_update_callback(data)
     if database:get('bot:viewget'..msg.sender_user_id_) then
       if not msg.forward_info_ then
         if database:get('lang:gp:'..msg.chat_id_) then
-          send(msg.chat_id_, msg.id_, 1, '`Oᴘᴇʀᴀᴛɪᴏɴ اِرورEʀʀᴏʀ 🚯﹗` \n\n >` 🗯🎴Please re-submit the command and then view the number👁‍🗨 of hits to get forward more!`', 1, 'md')
+          send(msg.chat_id_, msg.id_, 1, '`Oᴘᴇʀᴀᴛɪᴏɴ اِرورEʀʀᴏʀ 🚯﹗` \n\n ` 🗯🎴Please re-submit the command and then view the number👁‍🗨 of hits to get forward more!`', 1, 'md')
         else
-          send(msg.chat_id_, msg.id_, 1, '`🚷خطا در انجامERROr عملیات !`\n\n > `🗯🎴لطفا دستور را مجدد ارسال کنید و سپس عمل مشاهده تعداد بازدید 👁‍🗨را با فوروارد مطلب دریافت کنید` !', 1, 'md')
+          send(msg.chat_id_, msg.id_, 1, '`🚷خطا در انجامERROr عملیات !`\n\n  `🗯🎴لطفا دستور را مجدد ارسال کنید و سپس عمل مشاهده تعداد بازدید 👁‍🗨را با فوروارد مطلب دریافت کنید` !', 1, 'md')
         end
         database:del('bot:viewget'..msg.sender_user_id_)
       else
         if database:get('lang:gp:'..msg.chat_id_) then
-          send(msg.chat_id_, msg.id_, 1, '>📊 The more 👁‍🗨hits you : '..msg.views_..' seen📯', 1, 'md')
+          send(msg.chat_id_, msg.id_, 1, '📊 The more 👁‍🗨hits you : '..msg.views_..' seen📯', 1, 'md')
         else
-          send(msg.chat_id_, msg.id_, 1, '>📊 میزان بازدید 👁‍🗨پست شما: '..msg.views_..'📯 بازدید', 1, 'md')
+          send(msg.chat_id_, msg.id_, 1, '📊 میزان بازدید 👁‍🗨پست شما: '..msg.views_..'📯 بازدید', 1, 'md')
         end
         database:del('bot:viewget'..msg.sender_user_id_)
       end
@@ -1821,16 +1821,30 @@ function tdcli_update_callback(data)
         return false
       else
         ------------------------------------ With Pattern -------------------------------------------
-        if is_momod(msg.sender_user_id_, msg.chat_id_) then
           if text:match("^[!/#]ping$") or text:match("^پینگ$") then
             if database:get('lang:gp:'..msg.chat_id_) then
               send(msg.chat_id_, msg.id_, 1, '*🇮🇷ᴏɴʟɪɴᴇ...*', 1, 'md')
             else
               send(msg.chat_id_, msg.id_, 1, '`🔰رُبات هَمچّناטּ در حال مُدیریَت گُروہ مِیباشَد 🇮🇷`', 1, 'md')
-            end
           end
         end
         -----------------------------------------------------------------------------------------------
+          if text:match("^[!/#]nerkh$") or text:match("^نرخ$") then
+            if database:get('lang:gp:'..msg.chat_id_) then
+              send(msg.chat_id_, msg.id_, 1, '💰قـیمت ربات دلیت:\n🔴یک ماهه : 5️⃣هزار تومان\n🔵دو ماهه: 8️⃣هزار تومان\n⚫️سه ماهه : 2️⃣1️⃣هزار تومان\n⚪️دائمی :0️⃣2️⃣هزار تومان\n🌀برای خرید ربات به کانال دلیت تیم مراجعه فرمایید\n@DeleteTeam', 1, 'md')
+            else
+              send(msg.chat_id_, msg.id_, 1, '💰قـیمت ربات دلیت:\n🔴یک ماهه : 5️⃣هزار تومان\n🔵دو ماهه: 8️⃣هزار تومان\n⚫️سه ماهه : 2️⃣1️⃣هزار تومان\n⚪️دائمی :0️⃣2️⃣هزار تومان\n🌀برای خرید ربات به کانال دلیت تیم مراجعه فرمایید\n@DeleteTeam', 1, 'md')
+            end
+        end     
+        ----------------------------------------------------------------------------------------------- 
+          if text:match("^[!/#][Ss]upport$") or text:match("^ساپورت$") then
+            if database:get('lang:gp:'..msg.chat_id_) then
+              send(msg.chat_id_, msg.id_, 1, '🔎𝔖𝔲𝔭𝔭𝔬𝔯𝔱 𝔊𝔯𝔬𝔲𝔭 𝔩𝔦𝔫𝑘 :https://telegram.me/joinchat/AAAAAELyAks3kUbJtcpmmg', 1, 'md')
+            else
+              send(msg.chat_id_, msg.id_, 1, '🔎𝔖𝔲𝔭𝔭𝔬𝔯𝔱 𝔊𝔯𝔬𝔲𝔭 𝔩𝔦𝔫𝑘 :https://telegram.me/joinchat/AAAAAELyAks3kUbJtcpmmg', 1, 'md')
+            end
+        end     
+        -----------------------------------------------------------------------------------------------          
         if is_admin(msg.sender_user_id_, msg.chat_id_) then
           if text:match("^[!/#][Ll]eave$") or text:match("^ترک گروه$") then
             chat_leave(msg.chat_id_, bot_id)
@@ -1844,15 +1858,15 @@ function tdcli_update_callback(data)
             local hash = 'bot:momod:'..msg.chat_id_
             if database:sismember(hash, result.sender_user_id_) then
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> 👤Usᴇʀ 🇮🇷: '..result.sender_user_id_..'`🎴is now a moderator🃏`', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' 👤Usᴇʀ 🇮🇷: '..result.sender_user_id_..'`🎴is now a moderator🃏`', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> 👤ڪًـاربر با شِناسِـہ 🇮🇷: '..result.sender_user_id_..'`🎴هم اکنون مدیر است🃏` !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' 👤ڪًـاربر با شِناسِـہ 🇮🇷: '..result.sender_user_id_..'`🎴هم اکنون مدیر است🃏` !', 1, 'md')
               end
             else
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> 👤Usᴇʀ 🇮🇷: '..result.sender_user_id_..'🃏*ᴘʀᴏᴍᴏᴛᴇᴅ* ƬƠ ᴍᴏᴅᴇʀᴀᴛᴏʀ🇮🇷', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' 👤Usᴇʀ 🇮🇷: '..result.sender_user_id_..'🃏*ᴘʀᴏᴍᴏᴛᴇᴅ* ƬƠ ᴍᴏᴅᴇʀᴀᴛᴏʀ🇮🇷', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> 👤ڪًـاربر با شِناسِـہ 🇮🇷: '..result.sender_user_id_..' `☈🃏به مدیریت ارتقا مقام یافت🇮🇷` !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' 👤ڪًـاربر با شِناسِـہ 🇮🇷: '..result.sender_user_id_..' `☈🃏به مدیریت ارتقا مقام یافت🇮🇷` !', 1, 'md')
               end
               database:sadd(hash, result.sender_user_id_)
             end
@@ -1865,16 +1879,16 @@ function tdcli_update_callback(data)
           function promote_by_username(extra, result, success)
             if result.id_ then
               if database:get('lang:gp:'..msg.chat_id_) then
-                texts = '> 🔻Usᴇʀ 🔸:'..result.id_..'🌐*ᴘʀᴏᴍᴏᴛᴇᴅ* ƬƠ ᴍᴏᴅᴇʀᴀᴛᴏʀ🃏'
+                texts = ' 🔻Usᴇʀ 🔸:'..result.id_..'🌐*ᴘʀᴏᴍᴏᴛᴇᴅ* ƬƠ ᴍᴏᴅᴇʀᴀᴛᴏʀ🃏'
               else
-                texts = '>👤ڪـاربر با شِناسِـہ 🇮🇷: '..result.id_..'⚜ `بـہ مدیریت ارتقا مقام یافت🉐!`'
+                texts = '👤ڪـاربر با شِناسِـہ 🇮🇷: '..result.id_..'⚜ `بـہ مدیریت ارتقا مقام یافت🉐!`'
               end
               database:sadd('bot:momod:'..msg.chat_id_, result.id_)
             else
               if not database:get('lang:gp:'..msg.chat_id_) then
-                texts = '>⚠️ Usᴇʀ ɴᴏᴛ ғᴏᴜɴᴅ'
+                texts = '⚠️ Usᴇʀ ɴᴏᴛ ғᴏᴜɴᴅ'
               else
-                texts = '>  ڪًـاربر یافت نشد ! ⚠️'
+                texts = '  ڪًـاربر یافت نشد ! ⚠️'
               end
             end
             send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
@@ -1885,9 +1899,9 @@ function tdcli_update_callback(data)
         if text:match("^[!/#][Pp]romote (%d+)$") and is_owner(msg.sender_user_id_, msg.chat_id_) then
           local ap = {string.match(text, "^([!/#][Pp]romote) (%d+)$")}
           if database:get('lang:gp:'..msg.chat_id_) then
-            send(msg.chat_id_, msg.id_, 1, '> 🔻Usᴇʀ 🔸: '..ap[2]..'🌐*ᴘʀᴏᴍᴏᴛᴇᴅ* ƬƠ ᴍᴏᴅᴇʀᴀᴛᴏʀ🃏', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' 🔻Usᴇʀ 🔸: '..ap[2]..'🌐*ᴘʀᴏᴍᴏᴛᴇᴅ* ƬƠ ᴍᴏᴅᴇʀᴀᴛᴏʀ🃏', 1, 'md')
           else
-            send(msg.chat_id_, msg.id_, 1, '>👤ڪـاربر با شِناسِـہ 🇮🇷: '..ap[2]..' ⚜ `بـہ مدیریت ارتقا مقام یافت🉐!`', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, '👤ڪـاربر با شِناسِـہ 🇮🇷: '..ap[2]..' ⚜ `بـہ مدیریت ارتقا مقام یافت🉐!`', 1, 'md')
           end
           database:sadd('bot:momod:'..msg.chat_id_, ap[2])
         end
@@ -1898,16 +1912,16 @@ function tdcli_update_callback(data)
             local hash = 'bot:momod:'..msg.chat_id_
             if not database:sismember(hash, result.sender_user_id_) then
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> 🔻Usᴇʀ 🔸: '..result.sender_user_id_..'🚫 ɪs ɴᴏᴛ ᴀ ᴍᴏᴅᴇʀᴀᴛᴏʀ🌐﹗', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' 🔻Usᴇʀ 🔸: '..result.sender_user_id_..'🚫 ɪs ɴᴏᴛ ᴀ ᴍᴏᴅᴇʀᴀᴛᴏʀ🌐﹗', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '>👤ڪـاربر با شِناسِـہ 🇮🇷: '..result.sender_user_id_..' 🚫 مدیر نمیباشد〽️ !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, '👤ڪـاربر با شِناسِـہ 🇮🇷: '..result.sender_user_id_..' 🚫 مدیر نمیباشد〽️ !', 1, 'md')
               end
             else
               database:srem(hash, result.sender_user_id_)
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> 🔻Usᴇʀ 🔸: '..result.sender_user_id_..' 〽️ᴡᴀs *reмoved*❌ ƒяσм ᴍᴏᴅᴇʀᴀᴛᴏʀ 🌐!', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' 🔻Usᴇʀ 🔸: '..result.sender_user_id_..' 〽️ᴡᴀs *reмoved*❌ ƒяσм ᴍᴏᴅᴇʀᴀᴛᴏʀ 🌐!', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '>👤ڪـاربر با شِناسِـہ 🇮🇷: '..result.sender_user_id_..' 〽️از مدیریت حذف❌ شد 🌐!', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, '👤ڪـاربر با شِناسِـہ 🇮🇷: '..result.sender_user_id_..' 〽️از مدیریت حذف❌ شد 🌐!', 1, 'md')
               end
             end
           end
@@ -1920,16 +1934,16 @@ function tdcli_update_callback(data)
           function demote_by_username(extra, result, success)
             if result.id_ then
               if database:get('lang:gp:'..msg.chat_id_) then
-                texts = '> 🔻Usᴇʀ 🔸: '..result.id_..'〽️ ᴡᴀs ɗємσтєɗ❌'
+                texts = ' 🔻Usᴇʀ 🔸: '..result.id_..'〽️ ᴡᴀs ɗємσтєɗ❌'
               else
-                texts = '>👤ڪـاربر با شِناسِـہ 🇮🇷: '..result.id_..'〽️ عزل مقام شد❌'
+                texts = '👤ڪـاربر با شِناسِـہ 🇮🇷: '..result.id_..'〽️ عزل مقام شد❌'
               end
               database:srem(hash, result.id_)
             else
               if not database:get('lang:gp:'..msg.chat_id_) then
-                texts = '>⚠️ Usᴇʀ ɴᴏᴛ ғᴏᴜɴᴅ !'
+                texts = '⚠️ Usᴇʀ ɴᴏᴛ ғᴏᴜɴᴅ !'
               else
-                texts = '>  ڪًـاربر یافت نشد ⚠️'
+                texts = '  ڪًـاربر یافت نشد ⚠️'
               end
             end
             send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
@@ -1941,9 +1955,9 @@ function tdcli_update_callback(data)
           local hash = 'bot:momod:'..msg.chat_id_
           local ap = {string.match(text, "^([!/#][Dd]emote) (%d+)$")}
           if database:get('lang:gp:'..msg.chat_id_) then
-            send(msg.chat_id_, msg.id_, 1, '> 🔻Usᴇʀ 🔸: '..ap[2]..' 〽️ᴡᴀs ɗємσтєɗ❌ !', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' 🔻Usᴇʀ 🔸: '..ap[2]..' 〽️ᴡᴀs ɗємσтєɗ❌ !', 1, 'md')
           else
-            send(msg.chat_id_, msg.id_, 1, '>👤ڪـاربر با شِناسِـہ 🇮🇷: '..ap[2]..' 〽️ عزل مقام شد❌ !', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, '👤ڪـاربر با شِناسِـہ 🇮🇷: '..ap[2]..' 〽️ عزل مقام شد❌ !', 1, 'md')
           end
           database:srem(hash, ap[2])
         end
@@ -1955,15 +1969,15 @@ function tdcli_update_callback(data)
               local hash = 'bot:vipmem:'..msg.chat_id_
               if database:sismember(hash, result.sender_user_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> 🔻Usᴇʀ 🔸: '..result.sender_user_id_..' is now a VIP member !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' 🔻Usᴇʀ 🔸: '..result.sender_user_id_..' is now a VIP member !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '>👤ڪـاربر با شِناسِـہ 🇮🇷: '..result.sender_user_id_..' هم اکنون عضو ویژه است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, '👤ڪـاربر با شِناسِـہ 🇮🇷: '..result.sender_user_id_..' هم اکنون عضو ویژه است !', 1, 'md')
                 end
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> 🔻Usᴇʀ 🔸: '..result.sender_user_id_..' *promoted* to VIP member !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' 🔻Usᴇʀ 🔸: '..result.sender_user_id_..' *promoted* to VIP member !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '>👤ڪـاربر با شِناسِـہ 🇮🇷: '..result.sender_user_id_..' به عضو ویژه ارتقا مقام یافت !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, '👤ڪـاربر با شِناسِـہ 🇮🇷: '..result.sender_user_id_..' به عضو ویژه ارتقا مقام یافت !', 1, 'md')
                 end
                 database:sadd(hash, result.sender_user_id_)
               end
@@ -1976,16 +1990,16 @@ function tdcli_update_callback(data)
             function promote_by_username(extra, result, success)
               if result.id_ then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  texts = '> User :'..result.id_..' *promoted* to VIP member !'
+                  texts = ' User :'..result.id_..' *promoted* to VIP member !'
                 else
-                  texts = '> کاربر با شناسه : '..result.id_..' به عضو ویژه ارتقا مقام یافت !'
+                  texts = ' کاربر با شناسه : '..result.id_..' به عضو ویژه ارتقا مقام یافت !'
                 end
                 database:sadd('bot:vipmem:'..msg.chat_id_, result.id_)
               else
                 if not database:get('lang:gp:'..msg.chat_id_) then
-                  texts = '> User not found'
+                  texts = ' User not found'
                 else
-                  texts = '> کاربر یافت نشد !'
+                  texts = ' کاربر یافت نشد !'
                 end
               end
               send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
@@ -1996,9 +2010,9 @@ function tdcli_update_callback(data)
           if text:match("^[!/#][Ss]etvip (%d+)$") then
             local ap = {string.match(text, "^([!/#][Ss]etvip) (%d+)$")}
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, '> User : '..ap[2]..' *promoted* to VIP member !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' User : '..ap[2]..' *promoted* to VIP member !', 1, 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..ap[2]..' به عضو ویژه ارتقا مقام یافت !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..ap[2]..' به عضو ویژه ارتقا مقام یافت !', 1, 'md')
             end
             database:sadd('bot:vipmem:'..msg.chat_id_, ap[2])
           end
@@ -2009,16 +2023,16 @@ function tdcli_update_callback(data)
               local hash = 'bot:vipmem:'..msg.chat_id_
               if not database:sismember(hash, result.sender_user_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' is not a VIP member !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' is not a VIP member !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..result.sender_user_id_..' مدیر نمیباشد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..result.sender_user_id_..' مدیر نمیباشد !', 1, 'md')
                 end
               else
                 database:srem(hash, result.sender_user_id_)
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' was *removed* from VIP member !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' was *removed* from VIP member !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..result.sender_user_id_..' از عضو ویژه حذف شد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..result.sender_user_id_..' از عضو ویژه حذف شد !', 1, 'md')
                 end
               end
             end
@@ -2031,16 +2045,16 @@ function tdcli_update_callback(data)
             function demote_by_username(extra, result, success)
               if result.id_ then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  texts = '> User : '..result.id_..' was demoted from VIP member !'
+                  texts = ' User : '..result.id_..' was demoted from VIP member !'
                 else
-                  texts = '> کاربر با شناسه : '..result.id_..' از عضو ویژه حذف شد !'
+                  texts = ' کاربر با شناسه : '..result.id_..' از عضو ویژه حذف شد !'
                 end
                 database:srem(hash, result.id_)
               else
                 if not database:get('lang:gp:'..msg.chat_id_) then
-                  texts = '> User not found !'
+                  texts = ' User not found !'
                 else
-                  texts = '> کاربر یافت نشد !'
+                  texts = ' کاربر یافت نشد !'
                 end
               end
               send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
@@ -2052,9 +2066,9 @@ function tdcli_update_callback(data)
             local hash = 'bot:vipmem:'..msg.chat_id_
             local ap = {string.match(text, "^([!/#][Dd]emvip) (%d+)$")}
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, '> User : '..ap[2]..' was demoted from VIP member !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' User : '..ap[2]..' was demoted from VIP member !', 1, 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..ap[2]..' از عضو ویژه شد !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..ap[2]..' از عضو ویژه شد !', 1, 'md')
             end
             database:srem(hash, ap[2])
           end
@@ -2062,9 +2076,9 @@ function tdcli_update_callback(data)
         -------------------------------------------------------------------------------------------------------
         if text:match("^[!/#][Gg]p id$") or text:match("^شناسه گروه$") then
           if database:get('lang:gp:'..msg.chat_id_) then
-            texts = "> Group ID : "..msg.chat_id_
+            texts = " Group ID : "..msg.chat_id_
           else
-            texts = "> شناسه گروه : "..msg.chat_id_
+            texts = " شناسه گروه : "..msg.chat_id_
           end
           send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
         end
@@ -2072,9 +2086,9 @@ function tdcli_update_callback(data)
         if text:match("^[!/#][Mm]y username$") or text:match("^یوزرنیم من$") then
           function get_username(extra,result,success)
             if database:get('lang:gp:'..msg.chat_id_) then
-              text = '> Your Username : {User}'
+              text = ' Your Username : {User}'
             else
-              text = '> یوزرنیم شما : {User}'
+              text = ' یوزرنیم شما : {User}'
             end
             local text = text:gsub('{User}',('@'..result.username_ or ''))
             send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
@@ -2097,17 +2111,17 @@ function tdcli_update_callback(data)
               if not is_momod(result.sender_user_id_, result.chat_id_) then
                 if database:sismember(hash, result.sender_user_id_) then
                   if database:get('lang:gp:'..msg.chat_id_) then
-                    send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' is already banned !', 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' is already banned !', 1, 'md')
                   else
-                    send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..result.sender_user_id_..' هم اکنون مسدود است !', 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..result.sender_user_id_..' هم اکنون مسدود است !', 1, 'md')
                   end
                   chat_kick(result.chat_id_, result.sender_user_id_)
                 else
                   database:sadd(hash, result.sender_user_id_)
                   if database:get('lang:gp:'..msg.chat_id_) then
-                    send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' has been banned !', 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' has been banned !', 1, 'md')
                   else
-                    send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..result.sender_user_id_..' مسدود گردید !', 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..result.sender_user_id_..' مسدود گردید !', 1, 'md')
                   end
                   chat_kick(result.chat_id_, result.sender_user_id_)
                 end
@@ -2123,17 +2137,17 @@ function tdcli_update_callback(data)
                 if not is_momod(result.id_, msg.chat_id_) then
                   database:sadd('bot:banned:'..msg.chat_id_, result.id_)
                   if database:get('lang:gp:'..msg.chat_id_) then
-                    texts = '> User : '..result.id_..' has been banned !'
+                    texts = ' User : '..result.id_..' has been banned !'
                   else
-                    texts = '> کاربر با شناسه : '..result.id_..' مسدود گردید !'
+                    texts = ' کاربر با شناسه : '..result.id_..' مسدود گردید !'
                   end
                   chat_kick(msg.chat_id_, result.id_)
                 end
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  texts = '> User not found'
+                  texts = ' User not found'
                 else
-                  texts = '> کاربر یافت نشد !'
+                  texts = ' کاربر یافت نشد !'
                 end
               end
               send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
@@ -2147,9 +2161,9 @@ function tdcli_update_callback(data)
               database:sadd('bot:banned:'..msg.chat_id_, ap[2])
               chat_kick(msg.chat_id_, ap[2])
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> User : '..ap[2]..' has been banned !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' User : '..ap[2]..' has been banned !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..ap[2]..' مسدود گردید !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..ap[2]..' مسدود گردید !', 1, 'md')
               end
             end
           end
@@ -2173,9 +2187,9 @@ function tdcli_update_callback(data)
             else
               del_all_msgs(msg.chat_id_, ass[2])
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> All messages from User : '..ass[2]..' has been deleted !', 1, 'html')
+                send(msg.chat_id_, msg.id_, 1, ' All messages from User : '..ass[2]..' has been deleted !', 1, 'html')
               else
-                send(msg.chat_id_, msg.id_, 1, '> تمامی پیام های ارسالی کاربر با شناسه : '..ass[2]..' حذف شد !', 1, 'html')
+                send(msg.chat_id_, msg.id_, 1, ' تمامی پیام های ارسالی کاربر با شناسه : '..ass[2]..' حذف شد !', 1, 'html')
               end
             end
           end
@@ -2186,15 +2200,15 @@ function tdcli_update_callback(data)
               if result.id_ then
                 del_all_msgs(msg.chat_id_, result.id_)
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  text = '> All messages from User : '..result.id_..' has been deleted !'
+                  text = ' All messages from User : '..result.id_..' has been deleted !'
                 else
-                  text = '> تمامی پیام های ارسالی کاربر با شناسه : '..result.id_..' حذف شد !'
+                  text = ' تمامی پیام های ارسالی کاربر با شناسه : '..result.id_..' حذف شد !'
                 end
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  text = '> User not found !'
+                  text = ' User not found !'
                 else
-                  text = '> کاربر یافت نشد !'
+                  text = ' کاربر یافت نشد !'
                 end
               end
               send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
@@ -2208,16 +2222,16 @@ function tdcli_update_callback(data)
               local hash = 'bot:banned:'..msg.chat_id_
               if not database:sismember(hash, result.sender_user_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' is not banned !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' is not banned !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..result.sender_user_id_..' مسدود نیست !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..result.sender_user_id_..' مسدود نیست !', 1, 'md')
                 end
               else
                 database:srem(hash, result.sender_user_id_)
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' has been unbanned !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' has been unbanned !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..result.sender_user_id_..' آزاد شد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..result.sender_user_id_..' آزاد شد !', 1, 'md')
                 end
               end
             end
@@ -2230,23 +2244,23 @@ function tdcli_update_callback(data)
               if result.id_ then
                 if not database:sismember('bot:banned:'..msg.chat_id_, result.id_) then
                   if database:get('lang:gp:'..msg.chat_id_) then
-                    send(msg.chat_id_, msg.id_, 1, '> User : '..result.id_..' is not banned !', 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, ' User : '..result.id_..' is not banned !', 1, 'md')
                   else
-                    send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..result.id_..' مسدود نیست !', 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..result.id_..' مسدود نیست !', 1, 'md')
                   end
                 else
                   database:srem('bot:banned:'..msg.chat_id_, result.id_)
                   if database:get('lang:gp:'..msg.chat_id_) then
-                    text = '> User : '..result.id_..' has been unbanned !'
+                    text = ' User : '..result.id_..' has been unbanned !'
                   else
-                    text = '> کاربر با شناسه : '..result.id_..' آزاد شد !'
+                    text = ' کاربر با شناسه : '..result.id_..' آزاد شد !'
                   end
                 end
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  text = '> User not found !'
+                  text = ' User not found !'
                 else
-                  text = '> کاربر یافت نشد !'
+                  text = ' کاربر یافت نشد !'
                 end
               end
               send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
@@ -2258,16 +2272,16 @@ function tdcli_update_callback(data)
             local ap = {string.match(text, "^([!/#][Uu]nban) (%d+)$")}
             if not database:sismember('bot:banned:'..msg.chat_id_, ap[2]) then
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> User : '..ap[2]..' is not banned !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' User : '..ap[2]..' is not banned !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..ap[2]..' مسدود نیست !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..ap[2]..' مسدود نیست !', 1, 'md')
               end
             else
               database:srem('bot:banned:'..msg.chat_id_, ap[2])
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> User : '..ap[2]..' has been unbanned !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' User : '..ap[2]..' has been unbanned !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..ap[2]..' آزاد شد !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..ap[2]..' آزاد شد !', 1, 'md')
               end
             end
           end
@@ -2279,9 +2293,9 @@ function tdcli_update_callback(data)
               database:sadd(hash, result.sender_user_id_)
               chat_kick(result.chat_id_, result.sender_user_id_)
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' has been globaly banned !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' has been globaly banned !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..result.sender_user_id_..' به طور کلی مسدود سازی گردید !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..result.sender_user_id_..' به طور کلی مسدود سازی گردید !', 1, 'md')
               end
             end
             getMessage(msg.chat_id_, msg.reply_to_message_id_,gban_by_reply)
@@ -2293,16 +2307,16 @@ function tdcli_update_callback(data)
               local hash = 'bot:gban:'
               if result.id_ then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  text = '> User : '..result.id_..' has been globaly banned !'
+                  text = ' User : '..result.id_..' has been globaly banned !'
                 else
-                  text = '> کاربر با شناسه : '..result.id_..' به صورت کلی مسدود گردید !'
+                  text = ' کاربر با شناسه : '..result.id_..' به صورت کلی مسدود گردید !'
                 end
                 database:sadd(hash, result.id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  text = '> User not found !'
+                  text = ' User not found !'
                 else
-                  text = '> کاربر یافت نشد !'
+                  text = ' کاربر یافت نشد !'
                 end
               end
               send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
@@ -2314,9 +2328,9 @@ function tdcli_update_callback(data)
             local ap = {string.match(text, "^([!/#][Bb]anall) (%d+)$")}
             local hash = 'bot:gban:'
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, '> User : '..ap[2]..' has been globaly banned !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' User : '..ap[2]..' has been globaly banned !', 1, 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..ap[2]..' به صورت کلی مسدود گردید !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..ap[2]..' به صورت کلی مسدود گردید !', 1, 'md')
             end
             database:set('bot:gban:'..ap[2],true)
             database:sadd(hash, ap[2])
@@ -2327,9 +2341,9 @@ function tdcli_update_callback(data)
             function ungban_by_reply(extra, result, success)
               local hash = 'bot:gban:'
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' has been unbanned (Gban)!', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' has been unbanned (Gban)!', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..result.sender_user_id_..' آزادسازی شد !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..result.sender_user_id_..' آزادسازی شد !', 1, 'md')
               end
               database:srem(hash, result.sender_user_id_)
             end
@@ -2342,16 +2356,16 @@ function tdcli_update_callback(data)
               local hash = 'bot:gban:'
               if result.id_ then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  text = '> User : '..result.id_..' has been unbanned (Gban) !'
+                  text = ' User : '..result.id_..' has been unbanned (Gban) !'
                 else
-                  text = '> کاربر با شناسه : '..result.id_..' از لیست مسدودیت ربات آزاد شد !'
+                  text = ' کاربر با شناسه : '..result.id_..' از لیست مسدودیت ربات آزاد شد !'
                 end
                 database:srem(hash, result.id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  text = '> User not found !'
+                  text = ' User not found !'
                 else
-                  text = '> کاربر یافت نشد !'
+                  text = ' کاربر یافت نشد !'
                 end
               end
               send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
@@ -2364,9 +2378,9 @@ function tdcli_update_callback(data)
             local hash = 'bot:gban:'
               database:srem(hash, ap[2])
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> User : '..ap[2]..' has been unbanned !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' User : '..ap[2]..' has been unbanned !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..ap[2]..' آزادسازی شد !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..ap[2]..' آزادسازی شد !', 1, 'md')
               end
             end
           -----------------------------------------------------------------------------------------------
@@ -2376,16 +2390,16 @@ function tdcli_update_callback(data)
               local hash = 'bot:muted:'..msg.chat_id_
               if database:sismember(hash, result.sender_user_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' is already muted !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' is already muted !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..result.sender_user_id_..' هم اکنون بی صدا است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..result.sender_user_id_..' هم اکنون بی صدا است !', 1, 'md')
                 end
               else
                 database:sadd(hash, result.sender_user_id_)
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' has been muted !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' has been muted !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..result.sender_user_id_..' بی صدا گردید !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..result.sender_user_id_..' بی صدا گردید !', 1, 'md')
                 end
               end
             end
@@ -2398,16 +2412,16 @@ function tdcli_update_callback(data)
               if result.id_ then
                 database:sadd('bot:muted:'..msg.chat_id_, result.id_)
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  texts = '> User : '..result.id_..' has been muted !'
+                  texts = ' User : '..result.id_..' has been muted !'
                 else
-                  texts = '> کاربر با شناسه : '..result.id_..' بی صدا گردید !'
+                  texts = ' کاربر با شناسه : '..result.id_..' بی صدا گردید !'
                 end
                 chat_kick(msg.chat_id_, result.id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  texts = '> User not found !'
+                  texts = ' User not found !'
                 else
-                  texts = '> کاربر یافت نشد !'
+                  texts = ' کاربر یافت نشد !'
                 end
               end
               send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
@@ -2419,16 +2433,16 @@ function tdcli_update_callback(data)
             local ap = {string.match(text, "^([!/#][Mm]uteuser) (%d+)$")}
             if database:sismember('bot:muted:'..msg.chat_id_, ap[2]) then
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> User : '..ap[2]..' is already muted !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' User : '..ap[2]..' is already muted !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..ap[2]..' هم اکنون بی صدا است !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..ap[2]..' هم اکنون بی صدا است !', 1, 'md')
               end
             else
               database:sadd('bot:muted:'..msg.chat_id_, ap[2])
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> User : '..ap[2]..' has been muted !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' User : '..ap[2]..' has been muted !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..ap[2]..' بی صدا گردید !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..ap[2]..' بی صدا گردید !', 1, 'md')
               end
             end
           end
@@ -2439,16 +2453,16 @@ function tdcli_update_callback(data)
               local hash = 'bot:muted:'..msg.chat_id_
               if not database:sismember(hash, result.sender_user_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' not muted !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' not muted !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..result.sender_user_id_..' بی صدا نیست !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..result.sender_user_id_..' بی صدا نیست !', 1, 'md')
                 end
               else
                 database:srem(hash, result.sender_user_id_)
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' has been unmuted !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' has been unmuted !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..result.sender_user_id_..' از حالت بی صدا خارج گردید !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..result.sender_user_id_..' از حالت بی صدا خارج گردید !', 1, 'md')
                 end
               end
             end
@@ -2461,23 +2475,23 @@ function tdcli_update_callback(data)
               if result.id_ then
                 if not database:sismember('bot:muted:'..msg.chat_id_, result.id_) then
                   if database:get('lang:gp:'..msg.chat_id_) then
-                    send(msg.chat_id_, msg.id_, 1, '> User : '..result.id_..' is not muted !', 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, ' User : '..result.id_..' is not muted !', 1, 'md')
                   else
-                    send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..result.id_..' بی صدا نیست !', 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..result.id_..' بی صدا نیست !', 1, 'md')
                   end
                 else
                   database:srem('bot:muted:'..msg.chat_id_, result.id_)
                   if database:get('lang:gp:'..msg.chat_id_) then
-                    text = '> User : '..result.id_..' has been unmuted !'
+                    text = ' User : '..result.id_..' has been unmuted !'
                   else
-                    text = '> کاربر با شناسه : '..result.id_..' از حالت بی صدا خارج گردید !'
+                    text = ' کاربر با شناسه : '..result.id_..' از حالت بی صدا خارج گردید !'
                   end
                 end
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  text = '> User not found !'
+                  text = ' User not found !'
                 else
-                  text = '> کاربر یافت نشد !'
+                  text = ' کاربر یافت نشد !'
                 end
               end
               send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
@@ -2489,16 +2503,16 @@ function tdcli_update_callback(data)
             local ap = {string.match(text, "^([!/#][Uu]nmuteuser) (%d+)$")}
             if not database:sismember('bot:muted:'..msg.chat_id_, ap[2]) then
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> User : '..ap[2]..' is not muted !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' User : '..ap[2]..' is not muted !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..ap[2]..' بی صدا نیست !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..ap[2]..' بی صدا نیست !', 1, 'md')
               end
             else
               database:srem('bot:muted:'..msg.chat_id_, ap[2])
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> User : '..ap[2]..' has been unmuted !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' User : '..ap[2]..' has been unmuted !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..ap[2]..' از حالت بی صدا خارج گردید !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..ap[2]..' از حالت بی صدا خارج گردید !', 1, 'md')
               end
             end
           end
@@ -2512,14 +2526,14 @@ function tdcli_update_callback(data)
               if database:get('lang:gp:'..msg.chat_id_) then
 
               else
-                send(msg.chat_id_, msg.id_, 1, '> کاربر '..result.sender_user_id_..' هم اکنون صاحب گروه میباشد !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' کاربر '..result.sender_user_id_..' هم اکنون صاحب گروه میباشد !', 1, 'md')
               end
             else
               database:sadd(hash, result.sender_user_id_)
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' added to owner list !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' added to owner list !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> کاربر '..result.sender_user_id_..' به عنوان صاحب گروه انتخاب شد !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' کاربر '..result.sender_user_id_..' به عنوان صاحب گروه انتخاب شد\n〰〰〰〰〰〰〰〰〰〰\n⚙️Deleтed Boт Verѕιoɴ3 By @DeleteTeam', 1, 'md')
               end
             end
           end
@@ -2532,15 +2546,15 @@ function tdcli_update_callback(data)
             if result.id_ then
               database:sadd('bot:owners:'..msg.chat_id_, result.id_)
               if database:get('lang:gp:'..msg.chat_id_) then
-                texts = '> User : '..result.id_..' added to owner list !'
+                texts = ' User : '..result.id_..' added to owner list !'
               else
-                texts = '> کاربر '..result.id_..' به عنوان صاحب گروه انتخاب شد !'
+                texts = ' کاربر '..result.id_..' به عنوان صاحب گروه انتخاب شد !'
               end
             else
               if database:get('lang:gp:'..msg.chat_id_) then
-                texts = '> User not found !'
+                texts = ' User not found !'
               else
-                texts = '> کاربر یافت نشد !'
+                texts = ' کاربر یافت نشد !'
               end
             end
             send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
@@ -2552,9 +2566,9 @@ function tdcli_update_callback(data)
           local ap = {string.match(text, "^([!/#][Ss]etowner) (%d+)$")}
           database:sadd('bot:owners:'..msg.chat_id_, ap[2])
           if database:get('lang:gp:'..msg.chat_id_) then
-            send(msg.chat_id_, msg.id_, 1, '> User : '..ap[2]..' added to owner list !', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' User : '..ap[2]..' added to owner list !', 1, 'md')
           else
-            send(msg.chat_id_, msg.id_, 1, '> کاربر '..ap[2]..' به عنوان صاحب گروه انتخاب شد !', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' کاربر '..ap[2]..' به عنوان صاحب گروه انتخاب شد !', 1, 'md')
           end
         end
         -----------------------------------------------------------------------------------------------
@@ -2564,16 +2578,16 @@ function tdcli_update_callback(data)
             local hash = 'bot:owners:'..msg.chat_id_
             if not database:sismember(hash, result.sender_user_id_) then
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' is not a owner !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' is not a owner !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> کاربر : '..result.sender_user_id_..' صاحب گروه نیست !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' کاربر : '..result.sender_user_id_..' صاحب گروه نیست !', 1, 'md')
               end
             else
               database:srem(hash, result.sender_user_id_)
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' removed from owner list !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' removed from owner list !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> کاربر : '..result.sender_user_id_..' از مقام صاحب گروه حذف شد !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' کاربر : '..result.sender_user_id_..' از مقام صاحب گروه حذف شد !', 1, 'md')
               end
             end
           end
@@ -2587,15 +2601,15 @@ function tdcli_update_callback(data)
             if result.id_ then
               database:srem(hash, result.id_)
               if database:get('lang:gp:'..msg.chat_id_) then
-                texts = '> User : '..result.id_..' removed from owner list !'
+                texts = ' User : '..result.id_..' removed from owner list !'
               else
-                texts = '> کاربر : '..result.id_..' از مقام صاحب گروه حذف شد !'
+                texts = ' کاربر : '..result.id_..' از مقام صاحب گروه حذف شد !'
               end
             else
               if database:get('lang:gp:'..msg.chat_id_) then
-                texts = '> User not found !'
+                texts = ' User not found !'
               else
-                texts = '> کاربر یافت نشد !'
+                texts = ' کاربر یافت نشد !'
               end
             end
             send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
@@ -2608,9 +2622,9 @@ function tdcli_update_callback(data)
           local ap = {string.match(text, "^([!/#][Dd]emowner) (%d+)$")}
           database:srem(hash, ap[2])
           if database:get('lang:gp:'..msg.chat_id_) then
-            send(msg.chat_id_, msg.id_, 1, '> User : '..ap[2]..' removed from owner list !', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' User : '..ap[2]..' removed from owner list !', 1, 'md')
           else
-            send(msg.chat_id_, msg.id_, 1, '> کاربر : '..ap[2]..' از مقام صاحب گروه حذف شد !', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' کاربر : '..ap[2]..' از مقام صاحب گروه حذف شد !', 1, 'md')
           end
         end
         -----------------------------------------------------------------------------------------------
@@ -2620,16 +2634,16 @@ function tdcli_update_callback(data)
             local hash = 'bot:admins:'
             if database:sismember(hash, result.sender_user_id_) then
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' is already admin !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' is already admin !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> کاربر : '..result.sender_user_id_..' هم اکنون ادمین است !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' کاربر : '..result.sender_user_id_..' هم اکنون ادمین است !', 1, 'md')
               end
             else
               database:sadd(hash, result.sender_user_id_)
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' added to admin list !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' added to admin list !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> کاربر : '..result.sender_user_id_..' به ادمین ها اضافه شد !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' کاربر : '..result.sender_user_id_..' به ادمین ها اضافه شد\n〰〰〰〰〰〰〰〰〰〰\n⚙️Deleтed Boт Verѕιoɴ3 By @DeleteTeam', 1, 'md')
               end
             end
           end
@@ -2641,16 +2655,16 @@ function tdcli_update_callback(data)
           function addadmin_by_username(extra, result, success)
             if result.id_ then
               if database:get('lang:gp:'..msg.chat_id_) then
-                texts = '> User : '..result.id_..' added to admin list !'
+                texts = ' User : '..result.id_..' added to admin list !'
               else
-                texts = '> کاربر : '..result.id_..' به ادمین ها اضافه شد !'
+                texts = ' کاربر : '..result.id_..' به ادمین ها اضافه شد !'
               end
               database:sadd('bot:admins:', result.id_)
             else
               if database:get('lang:gp:'..msg.chat_id_) then
-                texts = '> User not found !'
+                texts = ' User not found !'
               else
-                texts = '> کاربر یافت نشد !'
+                texts = ' کاربر یافت نشد !'
               end
             end
             send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
@@ -2661,9 +2675,9 @@ function tdcli_update_callback(data)
         if text:match("^[!/#][Aa]ddadmin (%d+)$") and is_sudo(msg) then
           local ap = {string.match(text, "^([!/#][Aa]ddadmin) (%d+)$")}
           if database:get('lang:gp:'..msg.chat_id_) then
-            send(msg.chat_id_, msg.id_, 1, '> User : '..ap[2]..' added to admin list !', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' User : '..ap[2]..' added to admin list !', 1, 'md')
           else
-            send(msg.chat_id_, msg.id_, 1, '> کاربر : '..ap[2]..' به ادمین ها اضافه شد !', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' کاربر : '..ap[2]..' به ادمین ها اضافه شد !', 1, 'md')
           end
           database:sadd('bot:admins:', ap[2])
         end
@@ -2674,16 +2688,16 @@ function tdcli_update_callback(data)
             local hash = 'bot:admins:'
             if not database:sismember(hash, result.sender_user_id_) then
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' is not admin !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' is not admin !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> کاربر : '..result.sender_user_id_..' ادمین نیست !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' کاربر : '..result.sender_user_id_..' ادمین نیست !', 1, 'md')
               end
             else
               database:srem(hash, result.sender_user_id_)
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' removed from admin list !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' removed from admin list !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> کاربر : '..result.sender_user_id_..' از ادمینی حذف شد !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' کاربر : '..result.sender_user_id_..' از ادمینی حذف شد !', 1, 'md')
               end
             end
           end
@@ -2697,15 +2711,15 @@ function tdcli_update_callback(data)
             if result.id_ then
               database:srem(hash, result.id_)
               if database:get('lang:gp:'..msg.chat_id_) then
-                texts = '> User : '..result.id_..' removed from admin list !'
+                texts = ' User : '..result.id_..' removed from admin list !'
               else
-                texts = '> کاربر : '..result.id_..' از ادمینی حذف شد !'
+                texts = ' کاربر : '..result.id_..' از ادمینی حذف شد !'
               end
             else
               if database:get('lang:gp:'..msg.chat_id_) then
-                texts = '> User not found !'
+                texts = ' User not found !'
               else
-                texts = '> کاربر یافت نشد !'
+                texts = ' کاربر یافت نشد !'
               end
             end
             send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
@@ -2718,9 +2732,9 @@ function tdcli_update_callback(data)
           local ap = {string.match(text, "^([!/#][Rr]emadmin) (%d+)$")}
           database:srem(hash, ap[2])
           if database:get('lang:gp:'..msg.chat_id_) then
-            send(msg.chat_id_, msg.id_, 1, '> User : '..ap[2]..' removed from admin list !', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' User : '..ap[2]..' removed from admin list !', 1, 'md')
           else
-            send(msg.chat_id_, msg.id_, 1, '> کاربر : '..ap[2]..' از ادمینی حذف شد !', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' کاربر : '..ap[2]..' از ادمینی حذف شد !', 1, 'md')
           end
         end
  if is_momod(msg.sender_user_id_, msg.chat_id_) then
@@ -2747,15 +2761,15 @@ function tdcli_update_callback(data)
                 local helpjanebien = io.open("./Help/helpjanebien.txt", "r")
                 local helpspamflooden = io.open("./Help/helpfloodspamen.txt", "r")
                 local helpvaziaten = io.open("./Help/helpvaziaten.txt", "r")
-                if text:match("^1$") then
+                if text:match("^راهنمای مدیریت$") then
                   database:del('helptime:'..msg.chat_id_)
                   local b = ( helpvaziaten:read("*a") )
                   send(msg.chat_id_, msg.id_, 1, b, 1, 'md')
-                elseif text:match("^2$") then
+                elseif text:match("^راهنمای قفل ها$") then
                   database:del('helptime:'..msg.chat_id_)
                   local c = ( helplocken:read("*a") )
                   send(msg.chat_id_, msg.id_, 1, c, 1, 'md')
-                elseif text:match("^3$") then
+                elseif text:match("^راهنمای جانبی$") then
                   database:del('helptime:'..msg.chat_id_)
                   local d = ( helpmediaen:read("*a") )
                   send(msg.chat_id_, msg.id_, 1, d, 1, 'md')
@@ -2776,13 +2790,13 @@ function tdcli_update_callback(data)
                   local h = ( helpjanebien:read("*a") )
                   send(msg.chat_id_, msg.id_, 1, h, 1, 'md')
                 elseif text:match("^0$") then
-                  send(msg.chat_id_, msg.id_, 1, '> The operation was canceled !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' The operation was canceled !', 1, 'md')
                   database:del('help:'..msg.chat_id_)
 				if database:ttl('helptime:'..msg.chat_id_, helptime) == 0 then
-		send(msg.chat_id_, msg.id_, 1, '> زمان استفاده از راهنما به پایان رسید\nبرای استفاده دوباره\n`راهنما`\nبزنید!', 1, 'md')
+		send(msg.chat_id_, msg.id_, 1, ' زمان استفاده از راهنما به پایان رسید\nبرای استفاده دوباره\n`راهنما`\nبزنید!', 1, 'md')
                 else
                   if text:match("^%d+$") then
-                    send(msg.chat_id_, msg.id_, 1, '> Your number is not in the list!', 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, ' Your number is not in the list!', 1, 'md')
                     database:del('help:'..msg.chat_id_)
                 end
               end
@@ -2796,15 +2810,15 @@ function tdcli_update_callback(data)
                 local helpjanebi = io.open("./Help/helpjanebi.txt", "r")
                 local helpspamflood = io.open("./Help/helpfloodspam.txt", "r")
                 local helpvaziat = io.open("./Help/helpvaziat.txt", "r")
-                if text:match("^1$") then
+                if text:match("^راهنمای مدیریت$") then
                   database:del('helptime:'..msg.chat_id_)
                   local b = ( helpvaziat:read("*a") )
                   send(msg.chat_id_, msg.id_, 1, b, 1, 'md')
-                elseif text:match("^2$") then
+                elseif text:match("^راهنمای قفل ها$") then
                   database:del('helptime:'..msg.chat_id_)
                   local c = ( helplock:read("*a") )
                   send(msg.chat_id_, msg.id_, 1, c, 1, 'md')
-                elseif text:match("^3$") then
+                elseif text:match("^راهنمای جانبی$") then
                   database:del('helptime:'..msg.chat_id_)
                   local d = ( helpmedia:read("*a") )
                   send(msg.chat_id_, msg.id_, 1, d, 1, 'md')
@@ -2825,13 +2839,13 @@ function tdcli_update_callback(data)
                   local h = ( helpjanebi:read("*a") )
                   send(msg.chat_id_, msg.id_, 1, h, 1, 'md')
                 elseif text:match("^0$") then
-                  send(msg.chat_id_, msg.id_, 1, '> عملیات لغو گردید !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' عملیات لغو گردید !', 1, 'md')
                   database:del('help:'..msg.chat_id_)
 		if database:ttl('helptime:'..msg.chat_id_, helptime) == 0 then
-		send(msg.chat_id_, msg.id_, 1, '> زمان استفاده از راهنما به پایان رسید\nبرای استفاده دوباره\n`راهنما`\nبزنید!', 1, 'md')
+		send(msg.chat_id_, msg.id_, 1, ' زمان استفاده از راهنما به پایان رسید\nبرای استفاده دوباره\n`راهنما`\nبزنید!', 1, 'md')
                 else
                   if text:match("^%d+$") then
-                    send(msg.chat_id_, msg.id_, 1, '> شماره مورد نظر شما در لیست موجود نمیباشد !', 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, ' شماره مورد نظر شما در لیست موجود نمیباشد !', 1, 'md')
                   end
 		end
                 end
@@ -2845,9 +2859,9 @@ function tdcli_update_callback(data)
             local hash =  'bot:momod:'..msg.chat_id_
             local list = database:smembers(hash)
             if database:get('lang:gp:'..msg.chat_id_) then
-              text = "> List of moderator : \n\n"
+              text = " List of moderator : \n\n"
             else
-              text = "> لیست مدیران گروه : \n\n"
+              text = " لیست مدیران گروه : \n\n"
             end
             for k,v in pairs(list) do
               local user_info = database:hgetall('user:'..v)
@@ -2860,9 +2874,9 @@ function tdcli_update_callback(data)
             end
             if #list == 0 then
               if database:get('lang:gp:'..msg.chat_id_) then
-                text = "> List of moderator is empty !"
+                text = " List of moderator is empty !"
               else
-                text = "> لیست مدیران خالی است !"
+                text = " لیست مدیران خالی است !"
               end
             end
             send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
@@ -2872,9 +2886,9 @@ function tdcli_update_callback(data)
             local hash =  'bot:vipmem:'..msg.chat_id_
             local list = database:smembers(hash)
             if database:get('lang:gp:'..msg.chat_id_) then
-              text = "> List of VIP Members : \n\n"
+              text = " List of VIP Members : \n\n"
             else
-              text = "> لیست عضو های ویژه :\n\n"
+              text = " لیست عضو های ویژه :\n\n"
             end
             for k,v in pairs(list) do
               local user_info = database:hgetall('user:'..v)
@@ -2887,9 +2901,9 @@ function tdcli_update_callback(data)
             end
             if #list == 0 then
               if database:get('lang:gp:'..msg.chat_id_) then
-                text = "> List of VIP members is empty !"
+                text = " List of VIP members is empty !"
               else
-                text = "> لیست عضو های ویژه خالی است !"
+                text = " لیست عضو های ویژه خالی است !"
               end
             end
             send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
@@ -2899,9 +2913,9 @@ function tdcli_update_callback(data)
             local hash =  'bot:muted:'..msg.chat_id_
             local list = database:smembers(hash)
             if database:get('lang:gp:'..msg.chat_id_) then
-              text = "> List of muted users : \n\n"
+              text = " List of muted users : \n\n"
             else
-              text = "> لیست افراد بی صدا : \n\n"
+              text = " لیست افراد بی صدا : \n\n"
             end
             for k,v in pairs(list) do
               local user_info = database:hgetall('user:'..v)
@@ -2914,9 +2928,9 @@ function tdcli_update_callback(data)
             end
             if #list == 0 then
               if database:get('lang:gp:'..msg.chat_id_) then
-                text = "> List of muted users is empty ! "
+                text = " List of muted users is empty ! "
               else
-                text = "> لیست افراد بی صدا خالی است ! "
+                text = " لیست افراد بی صدا خالی است ! "
               end
             end
             send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
@@ -2926,9 +2940,9 @@ function tdcli_update_callback(data)
             local hash =  'bot:owners:'..msg.chat_id_
             local list = database:smembers(hash)
             if not database:get('lang:gp:'..msg.chat_id_) then
-              text = "> لیست صاحبان گروه : \n\n"
+              text = " لیست صاحبان گروه : \n\n"
             else
-              text = "> Owners list : \n\n"
+              text = " Owners list : \n\n"
             end
             for k,v in pairs(list) do
               local user_info = database:hgetall('user:'..v)
@@ -2941,9 +2955,9 @@ function tdcli_update_callback(data)
             end
             if #list == 0 then
               if database:get('lang:gp:'..msg.chat_id_) then
-                text = "> Owner list is empty !"
+                text = " Owner list is empty !"
               else
-                text = "> لیست صاحبان گروه خالی است !"
+                text = " لیست صاحبان گروه خالی است !"
               end
             end
             send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
@@ -2953,9 +2967,9 @@ function tdcli_update_callback(data)
             local hash =  'bot:banned:'..msg.chat_id_
             local list = database:smembers(hash)
             if database:get('lang:gp:'..msg.chat_id_) then
-              text = "> List of banlist : \n\n"
+              text = " List of banlist : \n\n"
             else
-              text = "> لیست افراد مسدود شده : \n\n"
+              text = " لیست افراد مسدود شده : \n\n"
             end
             for k,v in pairs(list) do
               local user_info = database:hgetall('user:'..v)
@@ -2968,9 +2982,9 @@ function tdcli_update_callback(data)
             end
             if #list == 0 then
               if database:get('lang:gp:'..msg.chat_id_) then
-                text = "> list of banlist is empty !"
+                text = " list of banlist is empty !"
               else
-                text = "> لیست افراد مسدود شده خالی است !"
+                text = " لیست افراد مسدود شده خالی است !"
               end
             end
             send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
@@ -2982,9 +2996,9 @@ function tdcli_update_callback(data)
             local hash =  'bot:gban:'
             local list = database:smembers(hash)
             if database:get('lang:gp:'..msg.chat_id_) then
-              text = "> List of banlist : \n\n"
+              text = " List of banlist : \n\n"
             else
-              text = "> لیست افراد تحت مسدودیت : \n\n"
+              text = " لیست افراد تحت مسدودیت : \n\n"
             end
             for k,v in pairs(list) do
               local user_info = database:hgetall('user:'..v)
@@ -2997,9 +3011,9 @@ function tdcli_update_callback(data)
             end
             if #list == 0 then
               if database:get('lang:gp:'..msg.chat_id_) then
-                text = "> list of banalllist is empty !"
+                text = " list of banalllist is empty !"
               else
-                text = "> لیست افراد تحت مسدودیت شده خالی است !"
+                text = " لیست افراد تحت مسدودیت شده خالی است !"
               end
             end
             send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
@@ -3010,9 +3024,9 @@ function tdcli_update_callback(data)
           local hash =  'bot:admins:'
           local list = database:smembers(hash)
           if database:get('lang:gp:'..msg.chat_id_) then
-            text = "> List of admins :\n\n"
+            text = " List of admins :\n\n"
           else
-            text = "> لیست ادمین ها :\n\n"
+            text = " لیست ادمین ها :\n\n"
           end
           for k,v in pairs(list) do
             local user_info = database:hgetall('user:'..v)
@@ -3025,9 +3039,9 @@ function tdcli_update_callback(data)
           end
           if #list == 0 then
             if database:get('lang:gp:'..msg.chat_id_) then
-              text = "> List of admins is empty !"
+              text = " List of admins is empty !"
             else
-              text = "> لیست ادمین ها خالی است !"
+              text = " لیست ادمین ها خالی است !"
             end
           end
           send(msg.chat_id_, msg.id_, 1, text, 'html')
@@ -3036,9 +3050,9 @@ function tdcli_update_callback(data)
         if text:match("^[!/#][Gg]etid$") or text:match("^دریافت شناسه$") and msg.reply_to_message_id_ ~= 0 then
           function id_by_reply(extra, result, success)
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, "> User ID : "..result.sender_user_id_, 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, " User ID : "..result.sender_user_id_, 1, 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, "> شناسه کاربر : "..result.sender_user_id_, 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ""..result.sender_user_id_, 1, 'md')
             end
           end
           getMessage(msg.chat_id_,msg.reply_to_message_id_,id_by_reply)
@@ -3086,23 +3100,23 @@ function tdcli_update_callback(data)
                 local gpid = tostring(result.id_)
                 if gpid:match('^(%d+)') then
                   if database:get('lang:gp:'..msg.chat_id_) then
-                    text = '> Username : @'..ap[2]..'\n> ID : ('..result.id_..')\n> Rank : '..t
+                    text = ' Username : @'..ap[2]..'\n ID : ('..result.id_..')\n Rank : '..t
                   else
-                    text = '> یوزرنیم : @'..ap[2]..'\n> شناسه : ('..result.id_..')\n> مقام : '..t
+                    text = ' یوزرنیم : @'..ap[2]..'\n شناسه : ('..result.id_..')\n مقام : '..t
                   end
                 else
                   if database:get('lang:gp:'..msg.chat_id_) then
-                    text = '> Username : @'..ap[2]..'\n> ID : ('..result.id_..')'
+                    text = ' Username : @'..ap[2]..'\n ID : ('..result.id_..')'
                   else
-                    text = '> یوزرنیم : @'..ap[2]..'\n> شناسه : ('..result.id_..')'
+                    text = ' یوزرنیم : @'..ap[2]..'\n شناسه : ('..result.id_..')'
                   end
                 end
               end
               if not result.id_ then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  text = '> Username is not correct ! '
+                  text = ' Username is not correct ! '
                 else
-                  text = '> یوزنیم صحیح نمیباشد  ! '
+                  text = ' یوزنیم صحیح نمیباشد  ! '
                 end
               end
               send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
@@ -3150,23 +3164,23 @@ function tdcli_update_callback(data)
                 local gpid = tostring(result.id_)
                 if gpid:match('^(%d+)') then
                   if database:get('lang:gp:'..msg.chat_id_) then
-                    text = '> Username : @'..ap[2]..'\n> ID : ('..result.id_..')\n> Rank : '..t
+                    text = ' Username : @'..ap[2]..'\n ID : ('..result.id_..')\n Rank : '..t
                   else
-                    text = '> یوزرنیم : @'..ap[2]..'\n> شناسه : ('..result.id_..')\n> مقام : '..t
+                    text = ' یوزرنیم : @'..ap[2]..'\n شناسه : ('..result.id_..')\n مقام : '..t
                   end
                 else
                   if database:get('lang:gp:'..msg.chat_id_) then
-                    text = '> Username : @'..ap[2]..'\n> ID : ('..result.id_..')'
+                    text = ' Username : @'..ap[2]..'\n ID : ('..result.id_..')'
                   else
-                    text = '> یوزرنیم : @'..ap[2]..'\n> شناسه : ('..result.id_..')'
+                    text = ' یوزرنیم : @'..ap[2]..'\n شناسه : ('..result.id_..')'
                   end
                 end
               end
               if not result.id_ then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  text = '> Username is not correct ! '
+                  text = ' Username is not correct ! '
                 else
-                  text = '> یوزنیم صحیح نمیباشد  ! '
+                  text = ' یوزنیم صحیح نمیباشد  ! '
                 end
               end
               send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
@@ -3179,9 +3193,9 @@ function tdcli_update_callback(data)
             function kick_reply(extra, result, success)
               if not is_momod(result.sender_user_id_, result.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> User : '..result.sender_user_id_..' has been kicked !', 1, 'html')
+                  send(msg.chat_id_, msg.id_, 1, ' User : '..result.sender_user_id_..' has been kicked !', 1, 'html')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..result.sender_user_id_..' اخراج شد !', 1, 'html')
+                  send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..result.sender_user_id_..' اخراج شد !', 1, 'html')
                 end
                 chat_kick(result.chat_id_, result.sender_user_id_)
               end
@@ -3195,17 +3209,17 @@ function tdcli_update_callback(data)
               if result.id_ then
                 if not is_momod(result.id_, msg.chat_id_) then
                   if database:get('lang:gp:'..msg.chat_id_) then
-                    texts = '> User : '..result.id_..' has been kicked !'
+                    texts = ' User : '..result.id_..' has been kicked !'
                   else
-                    texts = '> کاربر با شناسه : '..result.id_..' اخراج گردید !'
+                    texts = ' کاربر با شناسه : '..result.id_..' اخراج گردید !'
                   end
                   chat_kick(msg.chat_id_, result.id_)
                 end
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  texts = '> User not found'
+                  texts = ' User not found'
                 else
-                  texts = '> کاربر یافت نشد !'
+                  texts = ' کاربر یافت نشد !'
                 end
               end
               send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
@@ -3218,9 +3232,9 @@ function tdcli_update_callback(data)
             if not is_momod(ap[2], msg.chat_id_) then
               chat_kick(msg.chat_id_, ap[2])
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> User : '..ap[2]..' has been kicked !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' User : '..ap[2]..' has been kicked !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> کاربر با شناسه : '..ap[2]..' اخراج گردید !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' کاربر با شناسه : '..ap[2]..' اخراج گردید !', 1, 'md')
               end
             end
           end
@@ -3230,18 +3244,18 @@ function tdcli_update_callback(data)
             if hash then
               local names = database:hkeys(hash)
               if database:get('lang:gp:'..msg.chat_id_) then
-                text = '> Filterlist : \n\n'
+                text = ' Filterlist : \n\n'
               else
-                text = '> لیست کلمات فیلتر شده : \n\n'
+                text = ' لیست کلمات فیلتر شده : \n\n'
               end
               for i=1, #names do
-                text = text..'> '..names[i]..'\n'
+                text = text..' '..names[i]..'\n'
               end
               if #names == 0 then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  text = "> Filterlist is empty !"
+                  text = " Filterlist is empty !"
                 else
-                  text = "> لیست کلمات فیلتر شده خالی است !"
+                  text = " لیست کلمات فیلتر شده خالی است !"
                 end
               end
               send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
@@ -3253,18 +3267,18 @@ function tdcli_update_callback(data)
             if hash then
               local names = database:hkeys(hash)
               if database:get('lang:gp:'..msg.chat_id_) then
-                text = '> Freelist : \n\n'
+                text = ' Freelist : \n\n'
               else
-                text = '> لیست عنوان های مجاز : \n\n'
+                text = ' لیست عنوان های مجاز : \n\n'
               end
               for i=1, #names do
-                text = text..'> '..names[i]..'\n'
+                text = text..' '..names[i]..'\n'
               end
               if #names == 0 then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  text = "> Freelist is empty !"
+                  text = " Freelist is empty !"
                 else
-                  text = "> لیست عنوان های مجاز خالی است !"
+                  text = " لیست عنوان های مجاز خالی است !"
                 end
               end
               send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
@@ -3286,9 +3300,9 @@ function tdcli_update_callback(data)
                 add_user(msg.chat_id_, result.id_, 5)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  texts = '> User not found !'
+                  texts = ' User not found !'
                 else
-                  texts = '> کاربر یافت نشد !'
+                  texts = ' کاربر یافت نشد !'
                 end
                 send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
               end
@@ -3311,30 +3325,30 @@ function tdcli_update_callback(data)
               if database:get('getidstatus'..msg.chat_id_) == "Photo" then
                 if result.photos_[0] then
                   if database:get('lang:gp:'..msg.chat_id_) then
-                    sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,'> Your ID : '..msg.sender_user_id_..'\n> Number of messages : '..user_msgs,msg.id_,msg.id_)
+                    sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,' Your ID : '..msg.sender_user_id_..'\n Number of messages : '..user_msgs,msg.id_,msg.id_)
                   else
-                    sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,'> شناسه شما : '..msg.sender_user_id_..'\n> تعداد پیام های ارسالی شما : '..user_msgs,msg.id_,msg.id_)
+                    sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,'🔅ʏᴏᴜʀ ɪᴅ : '..msg.sender_user_id_..'\n تعداد پیام های ارسالی شما : '..user_msgs,msg.id_,msg.id_)
                   end
                 else
                   if database:get('lang:gp:'..msg.chat_id_) then
-                    send(msg.chat_id_, msg.id_, 1, "> You don't have profile photo !\n\n> Your ID : "..msg.sender_user_id_.."\n> Number of messages  : "..user_msgs, 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, " You don't have profile photo !\n\n Your ID : "..msg.sender_user_id_.."\n Number of messages  : "..user_msgs, 1, 'md')
                   else
-                    send(msg.chat_id_, msg.id_, 1, "> شما عکس پروفایل ندارید !\n\n> شناسه شما : "..msg.sender_user_id_.."\n> تعداد پیام های ارسالی شما : "..user_msgs, 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, " شما عکس پروفایل ندارید !\n\n🔅ʏᴏᴜʀ ɪᴅ : "..msg.sender_user_id_.."\n🔅ʏᴏᴜʀ ᴘᴍ : "..user_msgs, 1, 'md')
                   end
                 end
               end
               if database:get('getidstatus'..msg.chat_id_) == "Simple" then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, "> Your ID : "..msg.sender_user_id_.."\n> Number of messages : "..user_msgs, 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " Your ID : "..msg.sender_user_id_.."\n Number of messages : "..user_msgs, 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, "> شناسه شما : "..msg.sender_user_id_.."\n> تعداد پیام های ارسالی شما : "..user_msgs, 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, "🔅ʏᴏᴜʀ ɪᴅ  : "..msg.sender_user_id_.."\n🔅ʏᴏᴜʀ ᴘᴍ  : "..user_msgs, 1, 'md')
                 end
               end
               if not database:get('getidstatus'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, "> Your ID : "..msg.sender_user_id_.."\n> Number of messages : "..user_msgs, 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " Your ID : "..msg.sender_user_id_.."\n Number of messages : "..user_msgs, 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, "> شناسه شما : "..msg.sender_user_id_.."\n> تعداد پیام های ارسالی شما : "..user_msgs, 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, "🔅ʏᴏᴜʀ ɪᴅ : "..msg.sender_user_id_.."\n🔅ʏᴏᴜʀ ᴘᴍ  : "..user_msgs, 1, 'md')
                 end
               end
             end
@@ -3351,30 +3365,30 @@ function tdcli_update_callback(data)
               if database:get('getidstatus'..msg.chat_id_) == "Photo" then
                 if result.photos_[0] then
                   if database:get('lang:gp:'..msg.chat_id_) then
-                    sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,'> Your ID : '..msg.sender_user_id_..'\n> Number of messages : '..user_msgs,msg.id_,msg.id_)
+                    sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,' Your ID : '..msg.sender_user_id_..'\n Number of messages : '..user_msgs,msg.id_,msg.id_)
                   else
-                    sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,'> شناسه شما : '..msg.sender_user_id_..'\n> تعداد پیام های ارسالی شما : '..user_msgs,msg.id_,msg.id_)
+                    sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,'🔅ʏᴏᴜʀ ɪᴅ : '..msg.sender_user_id_..'\n🔅ʏᴏᴜʀ ᴘᴍ : '..user_msgs,msg.id_,msg.id_)
                   end
                 else
                   if database:get('lang:gp:'..msg.chat_id_) then
-                    send(msg.chat_id_, msg.id_, 1, "> You don't have profile photo !\n\n> Your ID : "..msg.sender_user_id_.."\n> Number of messages  : "..user_msgs, 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, " You don't have profile photo !\n\n Your ID : "..msg.sender_user_id_.."\n Number of messages  : "..user_msgs, 1, 'md')
                   else
-                    send(msg.chat_id_, msg.id_, 1, "> شما عکس پروفایل ندارید !\n\n> شناسه شما : "..msg.sender_user_id_.."\n> تعداد پیام های ارسالی شما : "..user_msgs, 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, " شما عکس پروفایل ندارید !\n\n 🔅ʏᴏᴜʀ ɪᴅ : "..msg.sender_user_id_.."\n🔅ʏᴏᴜʀ ᴘᴍ : "..user_msgs, 1, 'md')
                   end
                 end
               end
               if database:get('getidstatus'..msg.chat_id_) == "Simple" then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, "> Your ID : "..msg.sender_user_id_.."\n> Number of messages : "..user_msgs, 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " Your ID : "..msg.sender_user_id_.."\n Number of messages : "..user_msgs, 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, "> شناسه شما : "..msg.sender_user_id_.."\n> تعداد پیام های ارسالی شما : "..user_msgs, 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, "🔅ʏᴏᴜʀ ɪᴅ : "..msg.sender_user_id_.."\n🔅ʏᴏᴜʀ ᴘᴍ : "..user_msgs, 1, 'md')
                 end
               end
               if not database:get('getidstatus'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, "> Your ID : "..msg.sender_user_id_.."\n> Number of messages : "..user_msgs, 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " Your ID : "..msg.sender_user_id_.."\n Number of messages : "..user_msgs, 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, "> شناسه شما : "..msg.sender_user_id_.."\n> تعداد پیام های ارسالی شما : "..user_msgs, 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, "🔅ʏᴏᴜʀ ɪᴅ : "..msg.sender_user_id_.."\n🔅ʏᴏᴜʀ ᴘᴍ : "..user_msgs, 1, 'md')
                 end
               end
             end
@@ -3410,15 +3424,15 @@ end
             if status[2] == "active" or status[2] == "فعال" then
               if database:get('getpro:'..msg.chat_id_) == "Active" then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Get profile photo is *already* actived ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Get profile photo is *already* actived ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> وضعیت دریافت عکس پروفایل از قبل بر روی حالت #فعال میباشد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' وضعیت دریافت عکس پروفایل از قبل بر روی حالت #فعال میباشد ! ', 1, 'md')
                 end
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Get profile photo has been changed to *active* ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Get profile photo has been changed to *active* ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> وضعیت دریافت عکس پروفایل بر روی حالت #فعال تنظیم شد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' وضعیت دریافت عکس پروفایل بر روی حالت #فعال تنظیم شد !', 1, 'md')
                 end
                 database:set('getpro:'..msg.chat_id_,'Active')
               end
@@ -3426,15 +3440,15 @@ end
             if status[2] == "deactive" or status[2] == "غیرفعال" then
               if database:get('getpro:'..msg.chat_id_) == "Deactive" then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Get profile photo is *already* deactived', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Get profile photo is *already* deactived', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> وضعیت دریافت عکس پروفایل از قبل بر روی حالت #غیرفعال میباشد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' وضعیت دریافت عکس پروفایل از قبل بر روی حالت #غیرفعال میباشد !', 1, 'md')
                 end
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Get profile photo has been change to *deactive* !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> وضعیت دریافت عکس پروفایل بر روی حالت #غیرفعال تنظیم شد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' وضعیت دریافت عکس پروفایل بر روی حالت #غیرفعال تنظیم شد !', 1, 'md')
                 end
                 database:set('getpro:'..msg.chat_id_,'Deactive')
               end
@@ -3447,9 +3461,9 @@ end
           local function gproen(extra, result, success)
             if not is_momod(msg.sender_user_id_, msg.chat_id_) and database:get('getpro:'..msg.chat_id_) == "Deactive" then
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, "> Get profile photo is deactive !", 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, " Get profile photo is deactive !", 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, "> دریافت عکس پروفایل غیرفعال شده است !", 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, " دریافت عکس پروفایل غیرفعال شده است !", 1, 'md')
               end
             else
               if pronumb[2] == '1' then
@@ -3554,9 +3568,9 @@ end
                 end
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, "> I just can get last 10 profile photos !", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " I just can get last 10 profile photos !", 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, "> من فقط میتوانم  10 عکس آخر را نمایش دهم !", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " من فقط میتوانم  10 عکس آخر را نمایش دهم !", 1, 'md')
                 end
               end
             end
@@ -3572,9 +3586,9 @@ end
           local pronumb = {string.match(text, "^(عکس پروفایلم) (%d+)$")}
           if not is_momod(msg.sender_user_id_, msg.chat_id_) and database:get('getpro:'..msg.chat_id_) == "Deactive" then
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, "> Get profile photo is deactive !", 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, " Get profile photo is deactive !", 1, 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, "> دریافت عکس پروفایل غیرفعال شده است !", 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, " دریافت عکس پروفایل غیرفعال شده است !", 1, 'md')
             end
           else
             local function gprofa(extra, result, success)
@@ -3681,9 +3695,9 @@ end
                 end
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, "> I just can get last 10 profile photos !", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " I just can get last 10 profile photos !", 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, "> من فقط میتوانم  10 عکس آخر را نمایش دهم !", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " من فقط میتوانم  10 عکس آخر را نمایش دهم !", 1, 'md')
                 end
               end
             end
@@ -3703,80 +3717,80 @@ end
             if lockpt[2] == "edit" or lockptf[2] == "ویرایش پیام" then
               if not database:get('editmsg'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock edit has been *activated* !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock edit has been *activated* !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل ویرایش پیام #فعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل ویرایش پیام فعال شد ! ', 1, 'md')
                 end
                 database:set('editmsg'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock edit is *already* activated ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock edit is *already* activated ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل ویرایش پیام از قبل #فعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل ویرایش پیام از قبل فعال است ! ', 1, 'md')
                 end
               end
             end
             if lockpt[2] == "cmd" or lockptf[2] == "حالت عدم جواب" then
               if not database:get('bot:cmds'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Case of no answer has been *enable* !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Case of no answer has been *enable* !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> حالت عدم جواب #فعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' حالت عدم جواب فعال شد ! ', 1, 'md')
                 end
                 database:set('bot:cmds'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Case of no answer is *already* enable !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Case of no answer is *already* enable !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> حالت عدم جواب از قبل #فعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' حالت عدم جواب از قبل فعال است ! ',1, 'md')
                 end
               end
             end
             if lockpt[2] == "bots" or lockptf[2] == "ربات" then
               if not database:get('bot:bots:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock bots has been *activated* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock bots has been *activated* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل ورود ربات #فعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل ورود ربات فعال شد ! ', 1, 'md')
                 end
                 database:set('bot:bots:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock bots is *already* enable ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock bots is *already* enable ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل ورود ربات از قبل #فعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل ورود ربات از قبل فعال است ! ',  1, 'md')
                 end
               end
             end
             if lockpt[2] == "flood" or lockptf[2] == "فلود" then
               if not database:get('anti-flood:'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock flood has been *activated* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock flood has been *activated* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل فلود #فعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل فلود فعال شد ! ', 1, 'md')
                 end
                 database:set('anti-flood:'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock flood is *already* enable ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock flood is *already* enable ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل فلود از قبل #فعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل فلود از قبل فعال است ! ', 1, 'md')
                 end
               end
             end
             if lockpt[2] == "pin" or lockptf[2] == "سنجاق پیام" then
               if not database:get('bot:pin:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock pin has been *activated* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock pin has been *activated* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, "> قفل سنجاق پیام #فعال شد ! ", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, "  قفل سنجاق پیام فعال شد ! ", 1, 'md')
                 end
                 database:set('bot:pin:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock pin is *already* enable ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock pin is *already* enable ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, "> قفل سنجاق پیام از قبل #فعال است ! ", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " قفل سنجاق پیام از قبل فعال است ! ",  1, 'md')
                 end
               end
             end
@@ -3789,15 +3803,15 @@ end
             local floodmax = {string.match(text, "^([!/#][Ss]etflood) (%d+)$")}
             if tonumber(floodmax[2]) < 2 then
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> Select a number greater than 2 !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' Select a number greater than 2 !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> عددی بزرگتر از 2 وارد کنید !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' عددی بزرگتر از 2 وارد کنید !', 1, 'md')
               end
             else
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> Flood sensitivity change to '..floodmax[2]..' !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' Flood sensitivity change to '..floodmax[2]..' !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> حساسیت فلود به '..floodmax[2]..' تنظیم شد !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' حساسیت فلود به '..floodmax[2]..' تنظیم شد !', 1, 'md')
               end
               database:set('flood:max:'..msg.chat_id_,floodmax[2])
             end
@@ -3810,15 +3824,15 @@ end
             if status[2] == "kick" or status[2] == "اخراج" then
               if database:get('floodstatus'..msg.chat_id_) == "Kicked" then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Flood status is *already* on Kicked ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Flood status is *already* on Kicked ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> وضعیت فلود از قبل بر روی حالت #اخراج میباشد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' وضعیت فلود از قبل بر روی حالت #اخراج میباشد ! ', 1, 'md')
                 end
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Flood status change to *Kicking* ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Flood status change to *Kicking* ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> وضعیت فلود بر روی حالت #اخراج تنظیم شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' وضعیت فلود بر روی حالت #اخراج تنظیم شد ! ', 1, 'md')
                 end
                 database:set('floodstatus'..msg.chat_id_,'Kicked')
               end
@@ -3826,15 +3840,15 @@ end
             if status[2] == "del" or status[2] == "حذف پیام" then
               if database:get('floodstatus'..msg.chat_id_) == "DelMsg" then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Flood status is *already* on Deleting !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Flood status is *already* on Deleting !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> وضعیت فلود از قبل بر روی حالت #حذف پیام میباشد !  ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' وضعیت فلود از قبل بر روی حالت #حذف پیام میباشد !  ', 1, 'md')
                 end
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Flood status has been change to *Deleting* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Flood status has been change to *Deleting* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> وضعیت فلود بر روی حالت #حذف پیام تنظیم شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' وضعیت فلود بر روی حالت #حذف پیام تنظیم شد ! ', 1, 'md')
                 end
                 database:set('floodstatus'..msg.chat_id_,'DelMsg')
               end
@@ -3847,15 +3861,15 @@ end
             if status[2] == "photo" or status[2] == "عکس" then
               if database:get('getidstatus'..msg.chat_id_) == "Photo" then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Get id status is *already* on Photo ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Get id status is *already* on Photo ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> وضعیت دریافت آیدی از قبل بر روی حالت #عکس میباشد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' وضعیت دریافت آیدی از قبل بر روی حالت #عکس میباشد ! ', 1, 'md')
                 end
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Get ID status has been changed to *Photo* ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Get ID status has been changed to *Photo* ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> وضعیت دریافت آیدی بر روی حالت #عکس تنظیم شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' وضعیت دریافت آیدی بر روی حالت #عکس تنظیم شد ! ', 1, 'md')
                 end
                 database:set('getidstatus'..msg.chat_id_,'Photo')
               end
@@ -3863,15 +3877,15 @@ end
             if status[2] == "simple" or status[2] == "ساده" then
               if database:get('getidstatus'..msg.chat_id_) == "Simple" then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Get ID status is *already* on Simple ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Get ID status is *already* on Simple ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> وضعیت دریافت آیدی از قبل بر روی حالت #ساده میباشد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' وضعیت دریافت آیدی از قبل بر روی حالت ساده میباشد ! ', 1, 'md')
                 end
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Get ID status has been change to *Simple* !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> وضعیت دریافت آیدی بر روی حالت #ساده تنظیم شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' وضعیت دریافت آیدی بر روی حالت ساده تنظیم شد ! ', 1, 'md')
                 end
                 database:set('getidstatus'..msg.chat_id_,'Simple')
               end
@@ -3886,15 +3900,15 @@ end
             if status[2] == "فعال" or status[2] == "on" then
               if database:get('autoleave') == "On" then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Auto Leave is now active !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Auto Leave is now active !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> خروج خودکار از قبل فعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' خروج خودکار از قبل فعال است ! ', 1, 'md')
                 end
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Auto Leave has been actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Auto Leave has been actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> خروج خودکار فعال شد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' خروج خودکار فعال شد !', 1, 'md')
                 end
                 database:set('autoleave','On')
               end
@@ -3902,15 +3916,15 @@ end
             if status[2] == "غیرفعال" or status[2] == "off" then
               if database:get('autoleave') == "Off" then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Auto Leave is now deactive !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Auto Leave is now deactive !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> خروج خودکار از قبل غیرفعال میباشد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' خروج خودکار از قبل غیرفعال میباشد !', 1, 'md')
                 end
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Auto leave has been deactived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Auto leave has been deactived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> خروج خودکار غیرفعال شد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' خروج خودکار غیرفعال شد !', 1, 'md')
                 end
                 database:set('autoleave','Off')
               end
@@ -3923,15 +3937,15 @@ end
             if status[2] == "فعال" or status[2] == "on" then
               if database:get('clerk') == "On" then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Clerk is now active !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Clerk is now active !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> منشی از قبل فعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' منشی از قبل فعال است ! ', 1, 'md')
                 end
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Clerk has been actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Clerk has been actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> منشی فعال شد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' منشی فعال شد !', 1, 'md')
                 end
                 database:set('clerk','On')
               end
@@ -3939,15 +3953,15 @@ end
             if status[2] == "غیرفعال" or status[2] == "off" then
               if database:get('clerk') == "Off" then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Clerk is now deactive !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Clerk is now deactive !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> منشی از قبل غیرفعال میباشد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' منشی از قبل غیرفعال میباشد !', 1, 'md')
                 end
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Auto leave has been deactived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Auto leave has been deactived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> منشی غیرفعال شد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' منشی غیرفعال شد !', 1, 'md')
                 end
                 database:set('clerk','Off')
               end
@@ -3958,26 +3972,26 @@ end
         if is_momod(msg.sender_user_id_, msg.chat_id_) then
           if text:match("^[!/#][Ss]etlink$") or text:match("^تنظیم لینک$") then
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, '> Plese send your group link now :', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' Plese send your group link now :', 1, 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, '> لطفا لینک گروه را ارسال نمایید :', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' لطفا لینک گروه را ارسال نمایید :',  1, 'md')
             end
             database:set("bot:group:link"..msg.chat_id_, 'waiting')
           end
           -----------------------------------------------------------------------------------------------
-          if text:match("^[!/#][Ll]ink$") or text:match("^دریافت لینک$") then
+          if text:match("^[!/#][Ll]ink$") or text:match("^لینک$") then
             local link = database:get("bot:group:link"..msg.chat_id_)
             if link then
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> Group link :\n'..link, 1, 'html')
+                send(msg.chat_id_, msg.id_, 1, ' Group link :\n'..link, 1, 'html')
               else
-                send(msg.chat_id_, msg.id_, 1, '> لینک گروه :\n'..link, 1, 'html')
+                send(msg.chat_id_, msg.id_, 1, ' لینک گروه :\n'..link, 1, 'html')
               end
             else
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> Group link is not set ! \n Plese send command Setlink and set it 🌹', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' Group link is not set ! \n Plese send command Setlink and set it 🌹', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> لینک گروه هنوز ذخیره نشده است ! \n لطفا با دستور Setlink آن را ذخیره کنید 🌹', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' لینک گروه هنوز ذخیره نشده است ! \n لطفا با دستور Setlink آن را ذخیره کنید 🌹', 1, 'md')
               end
             end
           end
@@ -3986,34 +4000,34 @@ end
         if is_momod(msg.sender_user_id_, msg.chat_id_) then
           if text:match("^[!/#][Ww]elcome on$") or text:match("^خوش امدگویی روشن$") then
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, '> Welcome activated !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' Welcome activated !', 1, 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, '> خوش آمد گویی فعال شد !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' خوش آمد گویی فعال شد !', 1, 'md')
             end
             database:set("bot:welcome"..msg.chat_id_,true)
           end
           if text:match("^[!/#][Ww]elcome off$") or text:match("^خوش امدگویی خاموش") then
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, '> Welcome deactivated !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' Welcome deactivated !', 1, 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, '> خوش آمد گویی غیرفعال شد !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' خوش آمد گویی غیرفعال شد !', 1, 'md')
             end
             database:del("bot:welcome"..msg.chat_id_)
           end
           if text:match("^[!/#][Ss]et welcome (.*)$") or text:match("^تنظیم متن خوش امدگویی (.*)$") then
             local welcome = {string.match(text, "^([!/#][Ss]et welcome) (.*)$")}
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, '> Welcome text has been saved !\n\nWelcome text :\n\n'..welcome[2], 1, 'html')
+              send(msg.chat_id_, msg.id_, 1, ' Welcome text has been saved !\n\nWelcome text :\n\n'..welcome[2], 1, 'html')
             else
-              send(msg.chat_id_, msg.id_, 1, '> پیام خوش آمد گویی ذخیره شد !\n\nمتن خوش آمد گویی :\n\n'..welcome[2], 1, 'html')
+              send(msg.chat_id_, msg.id_, 1, ' پیام خوش آمد گویی ذخیره شد !\n\nمتن خوش آمد گویی :\n\n'..welcome[2], 1, 'html')
             end
             database:set('welcome:'..msg.chat_id_,welcome[2])
           end
           if text:match("^[!/#][Dd]el welcome$") or text:match("^حذف متن خوش امدگویی$") then
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, '> Welcome text has been removed !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' Welcome text has been removed !', 1, 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, '> پیام خوش آمد گویی حذف شد !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' پیام خوش آمد گویی حذف شد !', 1, 'md')
             end
             database:del('welcome:'..msg.chat_id_)
           end
@@ -4023,9 +4037,9 @@ end
               send(msg.chat_id_, msg.id_, 1, wel, 1, 'md')
             else
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> Welcome text not found !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' Welcome text not found !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> پیامی در لیست نیست !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' پیامی در لیست نیست !', 1, 'md')
               end
             end
           end
@@ -4036,17 +4050,17 @@ end
           if text:match("^[!/#][Ss]et clerk (.*)$") then
             local clerk = {string.match(text, "^([!/#][Ss]et clerk) (.*)$")}
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, '> Clerk text has been saved !\nWelcome text :\n\n'..clerk[2], 1, 'html')
+              send(msg.chat_id_, msg.id_, 1, ' Clerk text has been saved !\nWelcome text :\n\n'..clerk[2], 1, 'html')
             else
-              send(msg.chat_id_, msg.id_, 1, '> پیام منشی ذخیره شد !\n\nمتن منشی :\n\n'..clerk[2], 1, 'html')
+              send(msg.chat_id_, msg.id_, 1, ' پیام منشی ذخیره شد !\n\nمتن منشی :\n\n'..clerk[2], 1, 'html')
             end
             database:set('textsec',clerk[2])
           end
           if text:match("^[!/#][Dd]el clerk$") or text:match("^حذف متن منشی$") then
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, '> Clerk text has been removed !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' Clerk text has been removed !', 1, 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, '> پیام منشی حذف شد !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' پیام منشی حذف شد !', 1, 'md')
             end
             database:del('textsec')
           end
@@ -4056,9 +4070,9 @@ end
               send(msg.chat_id_, msg.id_, 1, cel, 1, 'html')
             else
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> Clerk text not found !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' Clerk text not found !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> پیامی در لیست نیست !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' پیامی در لیست نیست !', 1, 'md')
               end
             end
           end
@@ -4088,9 +4102,9 @@ end
             local hash = 'bot:filters:'..msg.chat_id_
             database:hset(hash, name,'newword')
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, "> Word [ "..name.." ] has been filtered !", 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, " Word [ "..name.." ] has been filtered !", 1, 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, "> کلمه [ "..name.." ] فیلتر شد !", 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, " کلمه [ "..name.." ] فیلتر شد !", 1, 'md')
             end
           end
         end
@@ -4104,15 +4118,15 @@ end
             local hash = 'bot:filters:'..msg.chat_id_
             if not database:hget(hash, name)then
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, "> Word : ["..name.."] is not in filterlist !", 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, " Word : ["..name.."] is not in filterlist !", 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, "> کلمه : ["..name.."] در لیست یافت نشد !", 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, " کلمه : ["..name.."] در لیست یافت نشد !", 1, 'md')
               end
             else
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, "> Word : ["..name.."] removed from filterlist !", 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, " Word : ["..name.."] removed from filterlist !", 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, "> کلمه : ["..name.."] از لیست فیلتر حذف شد !", 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, " کلمه : ["..name.."] از لیست فیلتر حذف شد !", 1, 'md')
               end
               database:hdel(hash, name)
             end
@@ -4127,9 +4141,9 @@ end
             local hash = 'bot:freewords:'..msg.chat_id_
             database:hset(hash, name,'newword')
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, "> Caption [ "..name.." ] has been freed !", 1, 'html')
+              send(msg.chat_id_, msg.id_, 1, " Caption [ "..name.." ] has been freed !", 1, 'html')
             else
-              send(msg.chat_id_, msg.id_, 1, "> عنوان [ "..name.." ] مجاز شد !", 1, 'html')
+              send(msg.chat_id_, msg.id_, 1, " عنوان [ "..name.." ] مجاز شد !", 1, 'html')
             end
           end
         end
@@ -4143,15 +4157,15 @@ end
             local hash = 'bot:freewords:'..msg.chat_id_
             if not database:hget(hash, name)then
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, "> Caption : ["..name.."] is not in freelist !", 1, 'html')
+                send(msg.chat_id_, msg.id_, 1, " Caption : ["..name.."] is not in freelist !", 1, 'html')
               else
-                send(msg.chat_id_, msg.id_, 1, "> عنوان : ["..name.."] در لیست یافت نشد !", 1, 'html')
+                send(msg.chat_id_, msg.id_, 1, " عنوان : ["..name.."] در لیست یافت نشد !", 1, 'html')
               end
             else
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, "> Caption : ["..name.."] removed from freelist !", 1, 'html')
+                send(msg.chat_id_, msg.id_, 1, " Caption : ["..name.."] removed from freelist !", 1, 'html')
               else
-                send(msg.chat_id_, msg.id_, 1, "> عنوان : ["..name.."] از لیست مجاز حذف شد !", 1, 'html')
+                send(msg.chat_id_, msg.id_, 1, " عنوان : ["..name.."] از لیست مجاز حذف شد !", 1, 'html')
               end
               database:hdel(hash, name)
             end
@@ -4193,31 +4207,31 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
             clerkfa = "غیرفعال"
           end
           if database:get('lang:gp:'..msg.chat_id_) then
-            send(msg.chat_id_, msg.id_, 1, '> Status : \n\n> Groups : '..gps..'\n\n> Msg received  : '..allmgs..'\n\n> Auto Leave : '..autoleaveen..'\n\n> Clerk : '..clerken, 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' Status : \n\n Groups : '..gps..'\n\n Msg received  : '..allmgs..'\n\n Auto Leave : '..autoleaveen..'\n\n Clerk : '..clerken, 1, 'md')
           else
-            send(msg.chat_id_, msg.id_, 1, '> وضعیت ربات : \n\n> تعداد گروه ها : '..gps..'\n\n> تعداد پیام های دریافتی  : '..allmgs..'\n\n> خروج خودکار : '..autoleavefa..'\n\n> منشی : '..clerkfa, 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' وضعیت ربات : \n\n تعداد گروه ها : '..gps..'\n\n تعداد پیام های دریافتی  : '..allmgs..'\n\n خروج خودکار : '..autoleavefa..'\n\n منشی : '..clerkfa, 1, 'md')
           end
         end
         ------------------------------------------------------------------------------
         if text:match("^[!/#][Rr]esgp$") or text:match("^بروزرسانی گروه های ربات$") and is_admin(msg.sender_user_id_, msg.chat_id_) then
           if database:get('lang:gp:'..msg.chat_id_) then
-            send(msg.chat_id_, msg.id_, 1, '> Nubmper of groups bot has been update !', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' Nubmper of groups bot has been update !', 1, 'md')
           else
-            send(msg.chat_id_, msg.id_, 1, '> تعداد گروه های ربات با موفقیت بروزرسانی گردید !', 'md')
+            send(msg.chat_id_, msg.id_, 1, ' تعداد گروه های ربات با موفقیت بروزرسانی گردید !', 'md')
           end
           database:del("bot:groups")
         end
         ------------------------------------------------------------------------------
         if text:match("^[!/#][Nn]amegp$") or text:match("^دریافت نام گروه$") and is_momod(msg.sender_user_id_, msg.chat_id_) then
-          send(msg.chat_id_, msg.id_, 1, '> نام گروه : '..chat.title_, 1, 'md')
+          send(msg.chat_id_, msg.id_, 1, ' نام گروه : '..chat.title_, 1, 'md')
         end
         -----------------------------------------------------------------------------------------------
         if text:match("^[!/#][Rr]esmsg$") or text:match("^شروع مجدد شمارش پیام دریافتی$") and is_sudo(msg) then
           database:del("bot:allmsgs")
           if database:get('lang:gp:'..msg.chat_id_) then
-            send(msg.chat_id_, msg.id_, 1, '> All msg received has been reset !', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' All msg received has been reset !', 1, 'md')
           else
-            send(msg.chat_id_, msg.id_, 1, '> شمارش پیام های دریافتی ، از نو شروع شد !', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' شمارش پیام های دریافتی ، از نو شروع شد !', 1, 'md')
           end
         end
         -----------------------------------------------------------------------------------------------
@@ -4225,17 +4239,17 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
           local langs = {string.match(text, "^(.*) (.*)$")}
           if langs[2] == "fa" or langs[2] == "فارسی" then
             if not database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, '> زبان ربات هم اکنون بر روی فارسی قرار دارد !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' زبان ربات هم اکنون بر روی فارسی قرار دارد !', 1, 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, '> زبان ربات به فارسی تغییر پیدا کرد ! ', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' زبان ربات به فارسی تغییر پیدا کرد ! ', 1, 'md')
               database:del('lang:gp:'..msg.chat_id_)
             end
           end
           if langs[2] == "en" or langs[2] == "انگلیسی" then
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, '> Language Bot is *already* English', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' Language Bot is *already* English', 1, 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, '> Language Bot has been changed to *English* !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' Language Bot has been changed to *English* !', 1, 'md')
               database:set('lang:gp:'..msg.chat_id_,true)
             end
           end
@@ -4248,80 +4262,80 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
             if unlockpt[2] == "edit" or unlockpts[2] == "ویرایش پیام" then
               if database:get('editmsg'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock edit has been *inactive* !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock edit has been *inactive* !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل ویرایش پیام #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, '♨️قفل ویرایش پیام غیرفعال شد', 1, 'md')
                 end
                 database:del('editmsg'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock edit is *already* inactive ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock edit is *already* inactive ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل ویرایش پیام از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, '♨️قفل ویرایش پیام از قبل غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unlockpt[2] == "cmd" or unlockpts[2] == "حالت عدم جواب" then
               if database:get('bot:cmds'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Case of no answer has been *inactive* !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Case of no answer has been *inactive* !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> حالت عدم جواب #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' حالت عدم جواب غیرفعال شد ! ',  1, 'md')
                 end
                 database:del('bot:cmds'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Case of no answer is *already* inactive ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Case of no answer is *already* inactive ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> حالت عدم جواب از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' حالت عدم جواب از قبل غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unlockpt[2] == "bots" or unlockpts[2] == "ربات" then
               if database:get('bot:bots:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock bot has been *inactive* !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock bot has been *inactive* !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل ورود ربات #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل ورود ربات غیرفعال شد ! ',  1, 'md')
                 end
                 database:del('bot:bots:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock bots is *already* inactive ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock bots is *already* inactive ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل ورود ربات از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل ورود ربات از قبل غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unlockpt[2] == "flood" or unlockpts[2] == "فلود" then
               if database:get('anti-flood:'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock flood has been *inactive* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock flood has been *inactive* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل فلود #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, '  قفل فلود غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('anti-flood:'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock flood is *already* inactive ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock flood is *already* inactive ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل قلود از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, '  قفل قلود از قبل غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unlockpt[2] == "pin" or unlockpts[2] == "سنجاق پیام" then
               if database:get('bot:pin:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, "> Lock pin has been *inactive* ! ", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " Lock pin has been *inactive* ! ", 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, "> قفل سنجاق پیام #غیرفعال شد ! ", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, "  قفل سنجاق پیام غیرفعال شد ! ", 1, 'md')
                 end
                 database:del('bot:pin:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, "> Lock pin is *already* inactive !", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " Lock pin is *already* inactive !", 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, "> قفل سنجاق پیام از قبل #غیرفعال است ! ", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, "  قفل سنجاق پیام از قبل غیرفعال است ! ", 1, 'md')
                 end
               end
             end
@@ -4336,9 +4350,9 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
             local num = tonumber(num1)
             database:setex('bot:muteall'..msg.chat_id_, num, true)
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, "> Lock all has been enable for "..mutept[1].." hours !", 'md')
+              send(msg.chat_id_, msg.id_, 1, " Lock all has been enable for "..mutept[1].." hours !", 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, "> قفل گروه [ همه چیز ] به مدت "..mutept[1].." ساعت #فعال شد !", 'md')
+              send(msg.chat_id_, msg.id_, 1, " قفل گروه [ همه چیز ] به مدت "..mutept[1].." ساعت فعال شد !", 'md')
             end
           end
           if text:match("^قفل جی تایم (%d+)$") then
@@ -4348,9 +4362,9 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
             local num = tonumber(num1)
             database:setex('bot:muteall'..msg.chat_id_, num, true)
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, "> Lock all has been enable for "..mutept[1].." hours !", 'md')
+              send(msg.chat_id_, msg.id_, 1, " Lock all has been enable for "..mutept[1].." hours !", 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, "> قفل گروه [ همه چیز ] به مدت "..mutept[1].." ساعت #فعال شد !", 'md')
+              send(msg.chat_id_, msg.id_, 1, " قفل گروه [ همه چیز ] به مدت "..mutept[1].." ساعت فعال شد !", 'md')
             end
           end
         end
@@ -4362,368 +4376,368 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
             if mutept[2] == "all" or  mutepts[2] == "گروه" then
               if not database:get('bot:muteall'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock all has been *actived* !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock all has been *actived* !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل گروه [ همه چیز ] #فعال شد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل گروه [ همه چیز ] فعال شد !', 1, 'md')
                 end
                 database:set('bot:muteall'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock all is *already* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock all is *already* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل گروه [ همه چیز ] از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل گروه [ همه چیز ] از قبل فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "text" or mutepts[2] == "متن" then
               if not database:get('bot:text:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock text has been *actived* !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock text has been *actived* !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل متن [ چت ] #فعال شد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل متن [ چت ]  فعال شد !', 1, 'md')
                 end
                 database:set('bot:text:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock text is *already* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock text is *already* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل متن [ چت ] از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل متن [ چت ] از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "inline" or mutepts[2] == "دکمه شیشه ای" then
               if not database:get('bot:inline:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock inline has been *actived* !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock inline has been *actived* !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل دکمه شیشه ایی #فعال شد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل دکمه شیشه ایی  فعال شد !', 1, 'md')
                 end
                 database:set('bot:inline:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock inline is *already* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock inline is *already* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل دکمه شیشه ایی از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل دکمه شیشه ایی از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "photo" or mutepts[2] == "عکس" then
               if not database:get('bot:photo:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock photo has been *actived* !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock photo has been *actived* !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل عکس #فعال شد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل عکس  فعال شد !', 1, 'md')
                 end
                 database:set('bot:photo:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock photo is *already* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock photo is *already* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل عکس از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل عکس از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "spam" or mutepts[2] == "اسپم" then
               if not database:get('bot:spam:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock spam has been *actived* !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock spam has been *actived* !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل اسپم #فعال شد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل اسپم  فعال شد !', 1, 'md')
                 end
                 database:set('bot:spam:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock spam is *already* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock spam is *already* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل اسپم از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل اسپم از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "video" or mutepts[2] == "فیلم" then
               if not database:get('bot:video:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock video has been *actived* !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock video has been *actived* !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل فیلم #فعال شد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل فیلم  فعال شد !', 1, 'md')
                 end
                 database:set('bot:video:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock video is *already* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock video is *already* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل فیلم از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل فیلم از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "gif" or mutepts[2] == "گیف" then
               if not database:get('bot:gifs:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock gif has been *actived* !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock gif has been *actived* !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل گیف #فعال شد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل گیف  فعال شد !', 1, 'md')
                 end
                 database:set('bot:gifs:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock gif is *already* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock gif is *already* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل گیف از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل گیف از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "music" or mutepts[2] == "موزیک" then
               if not database:get('bot:music:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock music has been *actived* !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock music has been *actived* !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل موزیک #فعال شد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل موزیک  فعال شد !', 1, 'md')
                 end
                 database:set('bot:music:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock music is *alraedy* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock music is *alraedy* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل موزیک از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل موزیک از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "voice" or mutepts[2] == "ویس" then
               if not database:get('bot:voice:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock voice has been actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock voice has been actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل ویس #فعال شد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل ویس  فعال شد !', 1, 'md')
                 end
                 database:set('bot:voice:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock voice is *already* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock voice is *already* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل ویس از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل ویس از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "links" or mutepts[2] == "لینک" then
               if not database:get('bot:links:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock links has been *actived* !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock links has been *actived* !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل لینک #فعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل لینک  فعال شد ! ', 1, 'md')
                 end
                 database:set('bot:links:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock links is *already* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock links is *already* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل لینک از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل لینک از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "location" or mutepts[2] == "موقعیت مکانی" then
               if not database:get('bot:location:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock location has been *actived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock location has been *actived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل موقعیت مکانی #فعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل موقعیت مکانی  فعال شد ! ', 1, 'md')
                 end
                 database:set('bot:location:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock location is *already* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock location is *already* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل موقعیت مکانی از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل موقعیت مکانی از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "tag" or mutepts[2] == "تگ" then
               if not database:get('tags:lock'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock tag has been *actived* !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock tag has been *actived* !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل تگ #فعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل تگ  فعال شد ! ', 1, 'md')
                 end
                 database:set('tags:lock'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock tag is *already* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock tag is *already* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل تگ از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل تگ از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "strict" or  mutepts[2] == "حالت سختگیرانه" then
               if not database:get('bot:strict'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Strict mode has been *enable* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Strict mode has been *enable* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> حالت [ سختگیرانه ] #فعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' حالت [ سختگیرانه ]  فعال شد ! ', 1, 'md')
                 end
                 database:set('bot:strict'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Strict mode is *already* enable ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Strict mode is *already* enable ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> حالت [ سختگیرانه ] از قبل #فعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' حالت [ سختگیرانه ] از قبل  فعال است ! ', 1, 'md')
                 end
               end
             end
             if mutept[2] == "file" or mutepts[2] == "فایل" then
               if not database:get('bot:document:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock file has been *actived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock file has been *actived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل فایل #فعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل فایل  فعال شد ! ', 1, 'md')
                 end
                 database:set('bot:document:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock file is *already* actived  !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock file is *already* actived  !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل فایل از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل فایل از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "hashtag" or mutepts[2] == "هشتگ" then
               if not database:get('bot:hashtag:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock hastag has been actived ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock hastag has been actived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل هشتگ #فعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل هشتگ  فعال شد ! ', 1, 'md')
                 end
                 database:set('bot:hashtag:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock hashtag is *already* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock hashtag is *already* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل هشتگ از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل هشتگ از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "contact" or mutepts[2] == "مخاطب" then
               if not database:get('bot:contact:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock contact has been *actived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock contact has been *actived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل ارسال مخاطب #فعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل ارسال مخاطب  فعال شد ! ', 1, 'md')
                 end
                 database:set('bot:contact:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock contact is *already* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock contact is *already* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل ارسال مخاطب از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل ارسال مخاطب از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "webpage" or mutepts[2] == "صفحات اینترنتی" then
               if not database:get('bot:webpage:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock webpage has been *actived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock webpage has been *actived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل ارسال صفحه اینترنتی #فعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل ارسال صفحه اینترنتی  فعال شد ! ', 1, 'md')
                 end
                 database:set('bot:webpage:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock webpage is *already* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock webpage is *already* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل ارسال صفحه اینترنتی از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل ارسال صفحه اینترنتی از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "farsi" or mutepts[2] == "نوشتار فارسی" then
               if not database:get('bot:arabic:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock farsi has been *actived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock farsi has been *actived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل نوشتار فارسی #فعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل نوشتار فارسی  فعال شد ! ', 1, 'md')
                 end
                 database:set('bot:arabic:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock farsi is *already* actived', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock farsi is *already* actived', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل نوشتار فارسی از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل نوشتار فارسی از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "english" or mutepts[2] == "نوشتار انگلیسی" then
               if not database:get('bot:english:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock english has been *actived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock english has been *actived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل نوشتار انگلیسی #فعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل نوشتار انگلیسی  فعال شد ! ', 1, 'md')
                 end
                 database:set('bot:english:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock english is *already* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock english is *already* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل نوشتار انگلیسی از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل نوشتار انگلیسی از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "sticker" or mutepts[2] == "استیکر" then
               if not database:get('bot:sticker:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock sticker has been *actived* !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock sticker has been *actived* !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل استیکر #فعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل استیکر  فعال شد ! ', 1, 'md')
                 end
                 database:set('bot:sticker:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock sticker is *already* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock sticker is *already* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل استیکر از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل استیکر از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "markdown" or mutepts[2] == "مدل نشانه گذاری" then
               if not database:get('markdown:lock'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock markdown has been *actived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock markdown has been *actived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل مدل نشانه گذاری #فعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل مدل نشانه گذاری  فعال شد ! ', 1, 'md')
                 end
                 database:set('markdown:lock'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock markdown is *already* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock markdown is *already* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل مدل نشانه گذاری از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل مدل نشانه گذاری از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "tgservice" or mutepts[2] == "سرویس تلگرام" then
               if not database:get('bot:tgservice:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock tgservice has been *actived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock tgservice has been *actived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل سرویس تلگرام #فعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل سرویس تلگرام  فعال شد ! ', 1, 'md')
                 end
                 database:set('bot:tgservice:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock tgservice is *already* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock tgservice is *already* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل سرویس تلگرام از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل سرویس تلگرام از قبل  فعال است !', 1, 'md')
                 end
               end
             end
             if mutept[2] == "fwd" or mutepts[2] == "فروارد" then
               if not database:get('bot:forward:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock forward has been *actived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock forward has been *actived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل فروارد #فعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل فروارد  فعال شد ! ', 1, 'md')
                 end
                 database:set('bot:forward:mute'..msg.chat_id_,true)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock forward is *already* actived !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock forward is *already* actived !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل فروارد از قبل #فعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل فروارد از قبل  فعال است !', 1, 'md')
                 end
               end
             end
@@ -4737,368 +4751,368 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
             if unmutept[2] == "all" or unmutept[2] == "gtime" or unmutepts[2] == "گروه" then
               if database:get('bot:muteall'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock all has been *inactived* !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock all has been *inactived* !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل گروه [ همه چیز ] #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل گروه [ همه چیز ]  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:muteall'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock all is *already* inactived ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock all is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل گروه [ همه چیز ] از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل گروه [ همه چیز ] از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "text" or unmutepts[2] == "متن" then
               if database:get('bot:text:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock text has been *inactived* ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock text has been *inactived* ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل متن [ چت ] #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل متن [ چت ]  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:text:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock text is *already* inactived ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock text is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل متن [ چت ] از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل متن [ چت ] از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "photo" or unmutepts[2] == "عکس" then
               if database:get('bot:photo:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock photo has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock photo has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل عکس #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل عکس  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:photo:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock photo is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل عکس از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل عکس از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "spam" or unmutepts[2] == "اسپم" then
               if database:get('bot:spam:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock spam has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock spam has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل اسپم #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل اسپم  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:spam:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock spam is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل اسپم از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل اسپم از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "video" or unmutepts[2] == "فیلم" then
               if database:get('bot:video:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock video has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock video has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل فیلم #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل فیلم  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:video:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock video is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل فیلم از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل فیلم از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "file" or unmutepts[2] == "فایل" then
               if database:get('bot:document:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock file has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock file has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل فایل #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل فایل  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:document:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock file is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل فایل از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل فایل از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "inline" or unmutepts[2] == "دکمه شیشه ای" then
               if database:get('bot:inline:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock inline has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock inline has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل دکمه شیشه ایی #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل دکمه شیشه ایی  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:inline:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock inline is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل دکمه شیشه ایی از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل دکمه شیشه ایی از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "markdown" or unmutepts[2] == "مدل نشانه گذاری" then
               if database:get('markdown:lock'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock markdown has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock markdown has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل مدل نشانه گذاری #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل مدل نشانه گذاری  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('markdown:lock'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock markdown is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل مدل نشانه گذاری از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل مدل نشانه گذاری از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "gif" or unmutepts[2] == "گیف" then
               if database:get('bot:gifs:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock gif has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock gif has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل گیف #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل گیف  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:gifs:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock gif is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل گیف از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل گیف از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "music" or unmutepts[2] == "موزیک" then
               if database:get('bot:music:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock music has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock music has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل موزیک #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل موزیک  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:music:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock music is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل موزیک از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل موزیک از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "voice" or unmutepts[2] == "ویس" then
               if database:get('bot:voice:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock voice has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock voice has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل ویس #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل ویس  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:voice:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock voice is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل ویس از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل ویس از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "links" or unmutepts[2] == "لینک" then
               if database:get('bot:links:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock links has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock links has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل لینک #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل لینک  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:links:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock link is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل لینک از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل لینک از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "location" or unmutepts[2] == "موقعیت مکانی" then
               if database:get('bot:location:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock location has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock location has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل موقعیت مکانی #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل موقعیت مکانی  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:location:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock location is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل موقعیت مکانی از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل موقعیت مکانی از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "tag" or unmutepts[2] == "تگ" then
               if database:get('tags:lock'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock tag has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock tag has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل تگ #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل تگ  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('tags:lock'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock tag is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل تگ از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل تگ از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "strict" or unmutepts[2] == "حالت سختگیرانه" then
               if database:get('bot:strict'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Strict mode has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Strict mode has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> حالت [ سختگیرانه ] #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' حالت [ سختگیرانه ]  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:strict'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Strict mode is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> حالت [ سختگیرانه ] از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' حالت [ سختگیرانه ] از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "hashtag" or unmutepts[2] == "هشتگ" then
               if database:get('bot:hashtag:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock hashtag has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock hashtag has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل ارسال مخاطب #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل ارسال مخاطب  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:hashtag:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock hashtag is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل هشتگ از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل هشتگ از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "contact" or unmutepts[2] == "مخاطب" then
               if database:get('bot:contact:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock contact has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock contact has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل مخاطب #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل مخاطب  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:contact:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock contact is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, ' > قفل ارسال مخاطب از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, '  قفل ارسال مخاطب از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "webpage" or unmutepts[2] == "صفحات اینترنتی" then
               if database:get('bot:webpage:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock webpage has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock webpage has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل ارسال صفحه اینترنتی #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل ارسال صفحه اینترنتی  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:webpage:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock webpage is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل ارسال صفحه اینترنتی از قبل #غیرفعال است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل ارسال صفحه اینترنتی از قبل  غیرفعال است !', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "farsi" or unmutepts[2] == "نوشتار فارسی" then
               if database:get('bot:arabic:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock farsi has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock farsi has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل نوشتار فارسی #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل نوشتار فارسی  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:arabic:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock farsi is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل نوشتار فارسی از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل نوشتار فارسی از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "english" or unmutepts[2] == "نوشتار انگلیسی" then
               if database:get('bot:english:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock english has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock english has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل نوشتار انگلیسی #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل نوشتار انگلیسی  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:english:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock english is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل نوشتار انگلیسی از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل نوشتار انگلیسی از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "tgservice" or unmutepts[2] == "سرویس تلگرام" then
               if database:get('bot:tgservice:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock tgservice has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock tgservice has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل سرویس تلگرام #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل سرویس تلگرام  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:tgservice:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock tgservice is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل سرویس تلگرام از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل سرویس تلگرام از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "sticker" or unmutepts[2] == "استیکر" then
               if database:get('bot:sticker:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock sticker has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock sticker has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل استیکر #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل استیکر  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:sticker:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock sticker is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل استیکر از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل استیکر از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
             if unmutept[2] == "fwd" or unmutepts[2] == "فروارد" then
               if database:get('bot:forward:mute'..msg.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Lock forward has been *inactived* ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Lock forward has been *inactived* ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل فروارد #غیرفعال شد ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل فروارد  غیرفعال شد ! ', 1, 'md')
                 end
                 database:del('bot:forward:mute'..msg.chat_id_)
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, 'Lock forward is *already* inactived ! ', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> قفل فروارد از قبل #غیرفعال است ! ', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' قفل فروارد از قبل  غیرفعال است ! ', 1, 'md')
                 end
               end
             end
@@ -5106,20 +5120,20 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
         end
         -----------------------------------------------------------------------------------------------
         if is_momod(msg.sender_user_id_, msg.chat_id_) then
-          if text:match("^[!/#][Ss]etspam (%d+)$") then
-            local sensspam = {string.match(text, "^([!/#][Ss]etspam) (%d+)$")}
+          if text:match("^[!/ ][Ss]etspam (%d+)$") then
+            local sensspam = {string.match(text, "^([!/ ][Ss]etspam) (%d+)$")}
             if tonumber(sensspam[2]) < 40 then
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> Enter a number greater than 40 !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' Enter a number greater than 40 !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> عددی بزرگتر از 40 وارد کنید !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' عددی بزرگتر از 40 وارد کنید !', 1, 'md')
               end
             else
               database:set('bot:sens:spam'..msg.chat_id_,sensspam[2])
               if not database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> حساسیت اسپم به '..sensspam[2]..' کاراکتر تنظیم شد !\nجملاتی که بیش از '..sensspam[2]..' حرف داشته باشند ، حذف خواهند شد !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' حساسیت اسپم به '..sensspam[2]..' کاراکتر تنظیم شد !\nجملاتی که بیش از '..sensspam[2]..' حرف داشته باشند ، حذف خواهند شد !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> Spam sensitivity has been set to [ ' ..sensspam[2]..' ] !\nSentences have over '..sensspam[2]..' character will delete !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' Spam sensitivity has been set to [ ' ..sensspam[2]..' ] !\nSentences have over '..sensspam[2]..' character will delete !', 1, 'md')
               end
             end
           end
@@ -5127,16 +5141,16 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
             local sensspam = {string.match(text, "^(تنظیم اسپم) (%d+)$")}
             if tonumber(sensspam[2]) < 40 then
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> Enter a number greater than 40 !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' Enter a number greater than 40 !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> عددی بزرگتر از 40 وارد کنید !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' عددی بزرگتر از 40 وارد کنید !', 1, 'md')
               end
             else
               database:set('bot:sens:spam'..msg.chat_id_,sensspam[2])
               if not database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> حساسیت اسپم به '..sensspam[2]..' کاراکتر تنظیم شد !\nجملاتی که بیش از '..sensspam[2]..' حرف داشته باشند ، حذف خواهند شد !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' حساسیت اسپم به '..sensspam[2]..' کاراکتر تنظیم شد !\nجملاتی که بیش از '..sensspam[2]..' حرف داشته باشند ، حذف خواهند شد !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> Spam sensitivity has been set to [ ' ..sensspam[2]..' ] !\nSentences have over '..sensspam[2]..' character will delete !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' Spam sensitivity has been set to [ ' ..sensspam[2]..' ] !\nSentences have over '..sensspam[2]..' character will delete !', 1, 'md')
               end
             end
           end
@@ -5160,18 +5174,18 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
             if txt[2] == 'banlist' or txts[2] == 'لیست افراد مسدود' then
               database:del('bot:banned:'..msg.chat_id_)
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> Banlist has been cleared !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' Banlist has been cleared !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> لیست افراد مسدود پاکسازی شد !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' لیست افراد مسدود پاکسازی شد !', 1, 'md')
               end
             end
             if is_sudo(msg) then
               if txt[2] == 'banalllist' or txts[2] == 'لیست افراد تحت مسدودیت' then
                 database:del('bot:gban:')
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '> Banlist has been cleared !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' Banlist has been cleared !', 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, '> لیست افراد مسدود پاکسازی شد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, ' لیست افراد مسدود پاکسازی شد !', 1, 'md')
                 end
               end
             end
@@ -5184,24 +5198,24 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
               end
               channel_get_bots(msg.chat_id_,g_bots)
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> All bots has been removed from group !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' All bots has been removed from group !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> تمامی ربات ها از گروه پاکسازی شدند !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' تمامی ربات ها از گروه پاکسازی شدند !', 1, 'md')
               end
             end
             if txt[2] == 'modlist' or txts[2] == 'لیست مدیران گروه' then
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> Mod list has been cleared ', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' Mod list has been cleared ', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> لیست مدیران گروه پاکسازی شد !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' لیست مدیران گروه پاکسازی شد !', 1, 'md')
               end
               database:del('bot:momod:'..msg.chat_id_)
             end
             if txt[2] == 'viplist' or txts[2] == 'لیست عضو های ویژه' then
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> VIP Members list has been cleared ', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' VIP Members list has been cleared ', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> لیست اعضای ویژه پاکسازی شد !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' لیست اعضای ویژه پاکسازی شد !', 1, 'md')
               end
               database:del('bot:vipmem:'..msg.chat_id_)
             end
@@ -5209,26 +5223,26 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
               local hash = 'bot:filters:'..msg.chat_id_
               database:del(hash)
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> Filterlist has been cleared !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' Filterlist has been cleared !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> لیست کلمات فیلتر شده پاکسازی شد !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' لیست کلمات فیلتر شده پاکسازی شد !', 1, 'md')
               end
             end
             if txt[2] == 'freelist' or txts[2] == 'لیست مجاز' then
               local hash = 'bot:freewords:'..msg.chat_id_
               database:del(hash)
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> Freelist has been cleared !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' Freelist has been cleared !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> لیست عنوان های مجاز پاکسازی شد !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' لیست عنوان های مجاز پاکسازی شد !', 1, 'md')
               end
             end
             if txt[2] == 'mutelist' or txts[2] == 'لیست افراد بی صدا' then
               database:del('bot:muted:'..msg.chat_id_)
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> Muted users list has been cleared !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' Muted users list has been cleared !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> لیست افراد بی صدا پاکسازی شد !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' لیست افراد بی صدا پاکسازی شد !', 1, 'md')
               end
             end
           end
@@ -5237,39 +5251,39 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
         if is_momod(msg.sender_user_id_, msg.chat_id_) then
           if text:match("^[Ss]ettings$") or text:match("^تنظیمات$") then
             if database:get('bot:muteall'..msg.chat_id_) then
-              mute_all = '#فعال'
+              mute_all = '✅'
             else
-              mute_all = '#غیرفعال'
+              mute_all = '❌'
             end
             ------------
             if database:get('bot:text:mute'..msg.chat_id_) then
-              mute_text = '#فعال'
+              mute_text = '✅'
             else
-              mute_text = '#غیرفعال'
+              mute_text = '❌'
             end
             ------------
             if database:get('bot:photo:mute'..msg.chat_id_) then
-              mute_photo = '#فعال'
+              mute_photo = '✅'
             else
-              mute_photo = '#غیرفعال'
+              mute_photo = '❌'
             end
             ------------
             if database:get('bot:video:mute'..msg.chat_id_) then
-              mute_video = '#فعال'
+              mute_video = '✅'
             else
-              mute_video = '#غیرفعال'
+              mute_video = '❌'
             end
             ------------
             if database:get('bot:gifs:mute'..msg.chat_id_) then
-              mute_gifs = '#فعال'
+              mute_gifs = '✅'
             else
-              mute_gifs = '#غیرفعال'
+              mute_gifs = '❌'
             end
             ------------
             if database:get('anti-flood:'..msg.chat_id_) then
-              mute_flood = '#فعال'
+              mute_flood = '✅'
             else
-              mute_flood = '#غیرفعال'
+              mute_flood = '❌'
             end
             ------------
             if not database:get('flood:max:'..msg.chat_id_) then
@@ -5293,213 +5307,213 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
             end
             ----------------------------------------------------
             if database:get('bot:music:mute'..msg.chat_id_) then
-              mute_music = '#فعال'
+              mute_music = '✅'
             else
-              mute_music = '#غیرفعال'
+              mute_music = '❌'
             end
             ------------
             if database:get('bot:bots:mute'..msg.chat_id_) then
-              mute_bots = '#فعال'
+              mute_bots = '✅'
             else
-              mute_bots = '#غیرفعال'
+              mute_bots = '❌'
             end
             ------------
             if database:get('bot:inline:mute'..msg.chat_id_) then
-              mute_in = '#فعال'
+              mute_in = '✅'
             else
-              mute_in = '#غیرفعال'
+              mute_in = '❌'
             end
             ------------
             if database:get('bot:cmds'..msg.chat_id_) then
-              mute_cmd = '#فعال'
+              mute_cmd = '✅'
             else
-              mute_cmd = '#غیرفعال'
+              mute_cmd = '❌'
             end
             ------------
             if database:get('bot:voice:mute'..msg.chat_id_) then
-              mute_voice = '#فعال'
+              mute_voice = '✅'
             else
-              mute_voice = '#غیرفعال'
+              mute_voice = '❌'
             end
 
             ------------
             if database:get('editmsg'..msg.chat_id_) then
-              mute_edit = '#فعال'
+              mute_edit = '✅'
             else
-              mute_edit = '#غیرفعال'
+              mute_edit = '❌'
             end
 
             ------------
             if database:get('bot:links:mute'..msg.chat_id_) then
-              mute_links = '#فعال'
+              mute_links = '✅'
             else
-              mute_links = '#غیرفعال'
+              mute_links = '❌'
             end
             ------------
             if database:get('bot:pin:mute'..msg.chat_id_) then
-              lock_pin = '#فعال'
+              lock_pin = '✅'
             else
-              lock_pin = '#غیرفعال'
+              lock_pin = '❌'
             end
             ------------
             if database:get('bot:sticker:mute'..msg.chat_id_) then
-              lock_sticker = '#فعال'
+              lock_sticker = '✅'
             else
-              lock_sticker = '#غیرفعال'
+              lock_sticker = '❌'
             end
             ------------
             if database:get('bot:tgservice:mute'..msg.chat_id_) then
-              lock_tgservice = '#فعال'
+              lock_tgservice = '✅'
             else
-              lock_tgservice = '#غیرفعال'
+              lock_tgservice = '❌'
             end
             ------------
             if database:get('bot:webpage:mute'..msg.chat_id_) then
-              lock_wp = '#فعال'
+              lock_wp = '✅'
             else
-              lock_wp = '#غیرفعال'
+              lock_wp = '❌'
             end
             ------------
             if database:get('bot:strict'..msg.chat_id_) then
-              strict = '#فعال'
+              strict = '✅'
             else
-              strict = '#غیرفعال'
+              strict = '❌'
             end
             ------------
             if database:get('bot:hashtag:mute'..msg.chat_id_) then
-              lock_htag = '#فعال'
+              lock_htag = '✅'
             else
-              lock_htag = '#غیرفعال'
+              lock_htag = '❌'
             end
             ------------
             if database:get('tags:lock'..msg.chat_id_) then
-              lock_tag = '#فعال'
+              lock_tag = '✅'
             else
-              lock_tag = '#غیرفعال'
+              lock_tag = '❌'
             end
             ------------
             if database:get('bot:location:mute'..msg.chat_id_) then
-              lock_location = '#فعال'
+              lock_location = '✅'
             else
-              lock_location = '#غیرفعال'
+              lock_location = '❌'
             end
             ------------
             if database:get('bot:contact:mute'..msg.chat_id_) then
-              lock_contact = '#فعال'
+              lock_contact = '✅'
             else
-              lock_contact = '#غیرفعال'
+              lock_contact = '❌'
             end
             ------------
             if database:get('bot:english:mute'..msg.chat_id_) then
-              lock_english = '#فعال'
+              lock_english = '✅'
             else
-              lock_english = '#غیرفعال'
+              lock_english = '❌'
             end
             ------------
             if database:get('bot:arabic:mute'..msg.chat_id_) then
-              lock_arabic = '#فعال'
+              lock_arabic = '✅'
             else
-              lock_arabic = '#غیرفعال'
+              lock_arabic = '❌'
             end
             ------------
             if database:get('bot:forward:mute'..msg.chat_id_) then
-              lock_forward = '#فعال'
+              lock_forward = '✅'
             else
-              lock_forward = '#غیرفعال'
+              lock_forward = '❌'
             end
             ------------
             if database:get('bot:document:mute'..msg.chat_id_) then
-              lock_file = '#فعال'
+              lock_file = '✅'
             else
-              lock_file = '#غیرفعال'
+              lock_file = '❌'
             end
             ------------
             if database:get('markdown:lock'..msg.chat_id_) then
-              markdown = '#فعال'
+              markdown = '✅'
             else
-              markdown = '#غیرفعال'
+              markdown = '❌'
             end
             ------------
             if database:get('bot:spam:mute'..msg.chat_id_) then
-              lock_spam = '#فعال'
+              lock_spam = '✅'
             else
-              lock_spam = '#غیرفعال'
+              lock_spam = '❌'
             end
             ------------
             if database:get("bot:welcome"..msg.chat_id_) then
-              send_welcome = '#فعال'
+              send_welcome = '✅'
             else
-              send_welcome = '#غیرفعال'
+              send_welcome = '❌'
             end
             ------------
-            local TXTFA = "⚙ تنظیمات گروه :\n\n"
-            .."> حالت سختگیرانه : "..strict.."\n"
-            .."> حالت قفل کلی گروه : "..mute_all.."\n"
-            .."> حالت عدم جواب : "..mute_cmd.."\n\n"
+            local TXTFA = "⚙ تنظیمات گروه ربات ضد لینک دلیت ورژن3  :\n\n"
+            .." 🔰حالت سختگیرانه : "..strict.."\n"
+            .." 🔰حالت قفل کلی گروه : "..mute_all.."\n"
+            .." 🔰حالت عدم جواب : "..mute_cmd.."\n\n"
             .."🔃 قفل های اصلی :\n\n"
-            .."> قفل اسپم : "..lock_spam.."\n"
-            .."> قفل لینک : "..mute_links.."\n"
-            .."️> قفل آدرس اینترنتی :  "..lock_wp.."\n"
-            .."> قفل تگ : "..lock_tag.."\n"
-            .."️> قفل هشتگ : "..lock_htag.."\n"
-            .."> قفل فروارد : "..lock_forward.."\n"
-            .."> قفل ورود ربات :  "..mute_bots.."\n"
-            .."️> قفل ویرایش پیام :  "..mute_edit.."\n"
-            .."️> قفل سنجاق پیام : "..lock_pin.."\n"
-            .."> قفل دکمه شیشه ایی : "..mute_in.."\n"
-            .."> قفل نوشتار فارسی :  "..lock_arabic.."\n"
-            .."> قفل نوشتار انگلیسی : "..lock_english.."\n"
-            .."> قفل مدل نشانه گذاری : "..markdown.."\n"
-            .."️> قفل سرویس تلگرام : "..lock_tgservice.."\n"
-            .."> قفل فلود : "..mute_flood.."\n"
-            .."> وضعیت فلود : "..floodstatus.."\n"
-            .."> حساسیت فلود : [ "..flood_m.." ]\n"
-            .."️> حساسیت اسپم : [ "..spam_c.." ]\n\n"
-            .." 🔃قفل های رسانه :\n\n"
-            .."> قفل متن [ چت ] : "..mute_text.."\n"
-            .."> قفل عکس : "..mute_photo.."\n"
-            .."> قفل فیلم : "..mute_video.."\n"
-            .."> قفل گیف : "..mute_gifs.."\n"
-            .."> قفل موزیک : "..mute_music.."\n"
-            .."> قفل ویس : "..mute_voice.."\n"
-            .."> قفل فایل : "..lock_file.."\n"
-            .."> قفل استیکر : "..lock_sticker.."\n"
-            .."> قفل ارسال مخاطب : "..lock_contact.."\n"
-            .."️> قفل موقعیت مکانی : "..lock_location.."\n"
+            .." 🔐قفل اسپم : "..lock_spam.."\n"
+            .."🔐 قفل لینک : "..mute_links.."\n"
+            .."️ 🔐قفل آدرس اینترنتی :  "..lock_wp.."\n"
+            .." 🔐قفل تگ : "..lock_tag.."\n"
+            .."️ 🔐قفل هشتگ : "..lock_htag.."\n"
+            .." 🔐قفل فروارد : "..lock_forward.."\n"
+            .." 🔐قفل ورود ربات :  "..mute_bots.."\n"
+            .."️ 🔐قفل ویرایش پیام :  "..mute_edit.."\n"
+            .."️ 🔐قفل سنجاق پیام : "..lock_pin.."\n"
+            .." 🔐قفل دکمه شیشه ایی : "..mute_in.."\n"
+            .." 🔐قفل نوشتار فارسی :  "..lock_arabic.."\n"
+            .." 🔐قفل نوشتار انگلیسی : "..lock_english.."\n"
+            .." 🔐قفل مدل نشانه گذاری : "..markdown.."\n"
+            .."️ 🔐قفل سرویس تلگرام : "..lock_tgservice.."\n"
+            .." 🔐قفل فلود : "..mute_flood.."\n"
+            .." 🔐وضعیت فلود : "..floodstatus.."\n"
+            .." 🔐حساسیت فلود : [ "..flood_m.." ]\n"
+            .."️ 🔐حساسیت اسپم : [ "..spam_c.." ]\n\n"
+            .." 🖇قفل های رسانه :\n\n"
+            .." 🔏قفل متن [ چت ] : "..mute_text.."\n"
+            .." 🔏قفل عکس : "..mute_photo.."\n"
+            .." 🔏قفل فیلم : "..mute_video.."\n"
+            .." 🔏قفل گیف : "..mute_gifs.."\n"
+            .." 🔏قفل موزیک : "..mute_music.."\n"
+            .." 🔏قفل ویس : "..mute_voice.."\n"
+            .." 🔏قفل فایل : "..lock_file.."\n"
+            .." 🔏قفل استیکر : "..lock_sticker.."\n"
+            .." 🔏قفل ارسال مخاطب : "..lock_contact.."\n"
+            .."️ 🔏قفل موقعیت مکانی : "..lock_location.."\n"
             local TXTEN = "⚙ Group Settings :\n\n"
-            .."> *Strict Mode* : "..strict.."\n"
-            .."> *Group lock All* : "..mute_all.."\n"
-            .."> *Case of no answer* : "..mute_cmd.."\n\n"
+            .." *Strict Mode* : "..strict.."\n"
+            .." *Group lock All* : "..mute_all.."\n"
+            .." *Case of no answer* : "..mute_cmd.."\n\n"
             .."🔃 *Centerial Settings* :\n\n"
-            .."> *Lock Spam* : "..lock_spam.."\n"
-            .."> *Lock Links* : "..mute_links.."\n"
-            .."️> *Lock Web-Page* :  "..lock_wp.."\n"
-            .."> *Lock Tag* : "..lock_tag.."\n"
-            .."️> *Lock Hashtag* : "..lock_htag.."\n"
-            .."> *Lock Forward* : "..lock_forward.."\n"
-            .."> *Lock Bots* :  "..mute_bots.."\n"
-            .."️> *Lock Edit* :  "..mute_edit.."\n"
-            .."️> *Lock Pin* : "..lock_pin.."\n"
-            .."> *Lock Inline* : "..mute_in.."\n"
-            .."> *Lock Farsi* :  "..lock_arabic.."\n"
-            .."> *Lock English* : "..lock_english.."\n"
-            .."> *Lock MarkDown* : "..markdown.."\n"
-            .."️> *Lock TgService* : "..lock_tgservice.."\n"
-            .."> *Lock Flood* : "..mute_flood.."\n"
-            .."> *Flood Status* : "..floodstatus.."\n"
-            .."> *Flood Sensitivity* : [ "..flood_m.." ]\n"
-            .."️> *Spam Sensitivity* : [ "..spam_c.." ]\n\n"
+            .." *Lock Spam* : "..lock_spam.."\n"
+            .." *Lock Links* : "..mute_links.."\n"
+            .."️ *Lock Web-Page* :  "..lock_wp.."\n"
+            .." *Lock Tag* : "..lock_tag.."\n"
+            .."️ *Lock Hashtag* : "..lock_htag.."\n"
+            .." *Lock Forward* : "..lock_forward.."\n"
+            .." *Lock Bots* :  "..mute_bots.."\n"
+            .."️ *Lock Edit* :  "..mute_edit.."\n"
+            .."️ *Lock Pin* : "..lock_pin.."\n"
+            .." *Lock Inline* : "..mute_in.."\n"
+            .." *Lock Farsi* :  "..lock_arabic.."\n"
+            .." *Lock English* : "..lock_english.."\n"
+            .." *Lock MarkDown* : "..markdown.."\n"
+            .."️ *Lock TgService* : "..lock_tgservice.."\n"
+            .." *Lock Flood* : "..mute_flood.."\n"
+            .." *Flood Status* : "..floodstatus.."\n"
+            .." *Flood Sensitivity* : [ "..flood_m.." ]\n"
+            .."️ *Spam Sensitivity* : [ "..spam_c.." ]\n\n"
             .." 🔃 *Media Settings* :\n\n"
-            .."> *Lock Text* : "..mute_text.."\n"
-            .."> *Lock Photo* : "..mute_photo.."\n"
-            .."> *Lock Videos* : "..mute_video.."\n"
-            .."> *Lock Gifs* : "..mute_gifs.."\n"
-            .."> *Lock Music* : "..mute_music.."\n"
-            .."> *Lock Voice* : "..mute_voice.."\n"
-            .."> *Lock File* : "..lock_file.."\n"
-            .."> *Lock Sticker* : "..lock_sticker.."\n"
-            .."> *Lock Contact* : "..lock_contact.."\n"
-            .."️> *Lock location* : "..lock_location.."\n"
+            .." *Lock Text* : "..mute_text.."\n"
+            .." *Lock Photo* : "..mute_photo.."\n"
+            .." *Lock Videos* : "..mute_video.."\n"
+            .." *Lock Gifs* : "..mute_gifs.."\n"
+            .." *Lock Music* : "..mute_music.."\n"
+            .." *Lock Voice* : "..mute_voice.."\n"
+            .." *Lock File* : "..lock_file.."\n"
+            .." *Lock Sticker* : "..lock_sticker.."\n"
+            .." *Lock Contact* : "..lock_contact.."\n"
+            .."️ *Lock location* : "..lock_location.."\n"
             TXTEN = TXTEN:gsub("#فعال","Active")
             TXTEN = TXTEN:gsub("#غیرفعال","Inactive")
             TXTEN = TXTEN:gsub("حذف پیام","Deleting")
@@ -5526,18 +5540,18 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
             local txt = {string.match(text, "^([!/#][Ss]etrules) (.*)$")}
             database:set('bot:rules'..msg.chat_id_, txt[2])
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, '> Group rules has been saved !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' Group rules has been saved !', 1, 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, '> قوانین گروه تنظیم شد !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' قوانین گروه تنظیم شد !', 1, 'md')
             end
           end
           if text:match("^تنظیم قوانین (.*)$") then
             local txt = {string.match(text, "^(تنظیم قوانین) (.*)$")}
             database:set('bot:rules'..msg.chat_id_, txt[2])
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, '> Group rules has been saved !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' Group rules has been saved !', 1, 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, '> قوانین گروه تنظیم شد !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' قوانین گروه تنظیم شد !', 1, 'md')
             end
           end
         end
@@ -5546,9 +5560,9 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
           local txt = {string.match(text, "^([!/#][Nn]ote) (.*)$")}
           database:set('owner:note1', txt[2])
           if database:get('lang:gp:'..msg.chat_id_) then
-            send(msg.chat_id_, msg.id_, 1, '> Saved !', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' Saved !', 1, 'md')
           else
-            send(msg.chat_id_, msg.id_, 1, '> ذخیره شد !', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' ذخیره شد !', 1, 'md')
           end
         end
         -----------------------------------------------------------------------------------------------
@@ -5571,17 +5585,17 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
           local txt = {string.match(text, "^(تنظیم نام گروه) (.*)$")}
           changetitle(msg.chat_id_, txt[2])
           if database:get('lang:gp:'..msg.chat_id_) then
-            send(msg.chat_id_, msg.id_, 1, '> Group name has been changed !', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' Group name has been changed !', 1, 'md')
           else
-            send(msg.chat_id_, msg.id_, 1, '> نام گروه تغییر یافت !', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' نام گروه تغییر یافت !', 1, 'md')
           end
         end
         -----------------------------------------------------------------------------------------------
         if text:match("^[!/#][Ss]etphoto$") or text:match("^تنظیم عکس گروه$") and is_owner(msg.sender_user_id_, msg.chat_id_) then
           if database:get('lang:gp:'..msg.chat_id_) then
-            send(msg.chat_id_, msg.id_, 1, '> Plese send group photo :', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' Plese send group photo :', 1, 'md')
           else
-            send(msg.chat_id_, msg.id_, 1, '> لطفا عکس را ارسال کنید :', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' لطفا عکس را ارسال کنید :', 1, 'md')
           end
           database:set('bot:setphoto'..msg.chat_id_..':'..msg.sender_user_id_,true)
         end
@@ -5589,9 +5603,9 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
         if text:match("^[!/#][Cc]harge (%d+)$") and is_admin(msg.sender_user_id_, msg.chat_id_) then
           local a = {string.match(text, "^([!/#][Cc]harge) (%d+)$")}
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, '> Group has been charged for '..a[2]..' day(s)!', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' Group has been charged for '..a[2]..' day(s)!', 1, 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, '> گروه برای مدت '..a[2]..' روز شارژ شد !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' گروه برای مدت '..a[2]..' روز شارژ شد !', 1, 'md')
             end
             local time = a[2] * day
             database:setex("bot:charge:"..msg.chat_id_,time,true)
@@ -5600,8 +5614,8 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
         if text:match("^[!/#][Cc]harge [Uu]nit$") and is_admin(msg.sender_user_id_, msg.chat_id_) then
           function unit(extra,result,success)
             local v = tonumber(bot_owner)
-            send(msg.chat_id_, msg.id_, 1, '> این گروه به صورت نامحدود شارژ شد !', 1, 'md')
-            send(v, 0, 1,'> همکار '..result.first_name_..' با شناسه : '..msg.sender_user_id_..' گروه با نام '..chat.title_..' را به صورت نامحدود شارژ کرد !', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' این گروه به صورت نامحدود شارژ شد !', 1, 'md')
+            send(v, 0, 1,' همکار '..result.first_name_..' با شناسه : '..msg.sender_user_id_..' گروه با نام '..chat.title_..' را به صورت نامحدود شارژ کرد !', 1, 'md')
             database:set("bot:charge:"..msg.chat_id_,true)
             database:set("bot:enable:"..msg.chat_id_,true)
           end
@@ -5613,24 +5627,24 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
             local ex = database:ttl("bot:charge:"..msg.chat_id_)
             if ex == -1 then
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> Unlimited !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' Unlimited !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> بدون محدودیت ( نامحدود ) !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' بدون محدودیت ( نامحدود ) !', 1, 'md')
               end
             else
               local b = math.floor(ex / day ) + 1
               if b == 0 then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, "> Credit Group has ended !", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " Credit Group has ended !", 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, "> اعتبار گروه به پایان رسیده است !", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " اعتبار گروه به پایان رسیده است !", 1, 'md')
                 end
               else
                 local d = math.floor(ex / day ) + 1
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, "> Group have validity for "..d.." day(s)", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " Group have validity for "..d.." day(s)", 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, "> گروه دارای "..d.." روز اعتبار میباشد ", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " گروه دارای "..d.." روز اعتبار میباشد ", 1, 'md')
                 end
               end
             end
@@ -5644,18 +5658,18 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
             pinmsg(msg.chat_id_,msg.reply_to_message_id_,'')
             database:set('pinnedmsg'..msg.chat_id_, msg.reply_to_message_id_)
 			                if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, "> The message has been pinned !", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " The message has been pinned !", 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, "> پیام مورد نظر سنجاق شد ! ", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " پیام مورد نظر سنجاق شد ! ", 1, 'md')
                 end
           end
           -----------------------------------------------------------------------------------------------
           if text:match("^[!/#][Uu]npin$") or text:match("^حذف سنجاق$") then
             unpinmsg(msg.chat_id_)
 			             if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, "> The message has been unpinned !", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " The message has been unpinned !", 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, "> پیام سنجاق شده از حالت سنجاق خارج شد !", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " پیام سنجاق شده از حالت سنجاق خارج شد !", 1, 'md')
                 end
           end
           -----------------------------------------------------------------------------------------------
@@ -5664,15 +5678,15 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
             if pin_id then
               pinmsg(msg.chat_id_,pin_id,0)
              if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, "> The message has been repinned !", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " The message has been repinned !", 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, "> پیام سنجاق شده سابق مجدد سنجاق شد !", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " پیام سنجاق شده سابق مجدد سنجاق شد !", 1, 'md')
                 end
 				else
 				             if database:get('lang:gp:'..msg.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, "> Message pinned the former was not found !", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " Message pinned the former was not found !", 1, 'md')
                 else
-                  send(msg.chat_id_, msg.id_, 1, "> پیام سنجاق شده سابق یافت نشد  !", 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, " پیام سنجاق شده سابق یافت نشد  !", 1, 'md')
                 end
             end
           end
@@ -5682,10 +5696,10 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
           local txt = {string.match(text, "^([!/#][Cc]harge stats) (%d+)$")}
           local ex = database:ttl("bot:charge:"..txt[2])
           if ex == -1 then
-            send(msg.chat_id_, msg.id_, 1, '> بدون محدودیت ( نامحدود ) !', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' بدون محدودیت ( نامحدود ) !', 1, 'md')
           else
             local d = math.floor(ex / day ) + 1
-            send(msg.chat_id_, msg.id_, 1, "> گروه دارای "..d.." روز اعتبار میباشد ", 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, " گروه دارای "..d.." روز اعتبار میباشد ", 1, 'md')
           end
         end
         -----------------------------------------------------------------------------------------------
@@ -5729,17 +5743,17 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
             local txt = {string.match(text, "^([!/#][Aa]dd)$")}
             if database:get("bot:enable:"..msg.chat_id_) then
               if not database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, ' گروه از قبل در لیست مدیریتی ربات میباشد !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' گروه از قبل در لیست مدیریتی ربات میباشد\n〰〰〰〰〰〰〰〰〰〰\n⚙️Deleтed Boт Verѕιoɴ3 By@DeleteTeam', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> This group is already in list management !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' This group is already in list management !', 1, 'md')
               end
             else
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> This group has been added to list management !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, ' This group has been added to list management !', 1, 'md')
               else
-                send(msg.chat_id_, msg.id_, 1, '> گروه به لیست مدیریتی ربات اضافه شد !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, '🛡گروه با موفقیت اضافه شد\n〰〰〰〰〰〰〰〰〰〰\n⚙️Deleтed Boт Verѕιoɴ3 By@DeleteTeam', 1, 'md')
               end
-            --  send(bot_owner, 0, 1, '> گروه جدیدی به لیست مدیریتی ربات اضافه شد !\n\n🌀 مشخصات همکار اضافه کننده :\n🔸آیدی همکار : '..msg.sender_user_id_..'\n🔸نام همکار : '..result.first_name_..'\n\n🌀مشخصات گروه :\n🔸 آیدی گروه : '..msg.chat_id_..'\n🔸نام گروه : '..chat.title_..'\n\n🔹اگر میخواهید ربات گروه را ترک کند از دستور زیر استفاده کنید : \n\n🔖 leave'..msg.chat_id_..'\n\n🔸اگر قصد وارد شدن به گروه را دارید از دستور زیر استفاده کنید : \n\n🔖 join'..msg.chat_id_..'\n\n🔅🔅🔅🔅🔅🔅\n\n📅 اگر قصد تمدید گروه را دارید از دستورات زیر استفاده کنید : \n\n⭕️برای شارژ به صورت یک ماه :\n🔖 plan1'..msg.chat_id_..'\n\n⭕️برای شارژ به صورت سه ماه :\n🔖 plan2'..msg.chat_id_..'\n\n⭕️برای شارژ به صورت نامحدود :\n🔖 plan3'..msg.chat_id_..'\n' , 1, 'html')
+            --  send(bot_owner, 0, 1, ' گروه جدیدی به لیست مدیریتی ربات اضافه شد !\n\n🌀 مشخصات همکار اضافه کننده :\n🔸آیدی همکار : '..msg.sender_user_id_..'\n🔸نام همکار : '..result.first_name_..'\n\n🌀مشخصات گروه :\n🔸 آیدی گروه : '..msg.chat_id_..'\n🔸نام گروه : '..chat.title_..'\n\n🔹اگر میخواهید ربات گروه را ترک کند از دستور زیر استفاده کنید : \n\n🔖 leave'..msg.chat_id_..'\n\n🔸اگر قصد وارد شدن به گروه را دارید از دستور زیر استفاده کنید : \n\n🔖 join'..msg.chat_id_..'\n\n🔅🔅🔅🔅🔅🔅\n\n📅 اگر قصد تمدید گروه را دارید از دستورات زیر استفاده کنید : \n\n⭕️برای شارژ به صورت یک ماه :\n🔖 plan1'..msg.chat_id_..'\n\n⭕️برای شارژ به صورت سه ماه :\n🔖 plan2'..msg.chat_id_..'\n\n⭕️برای شارژ به صورت نامحدود :\n🔖 plan3'..msg.chat_id_..'\n' , 1, 'html')
               database:set("bot:enable:"..msg.chat_id_,true)
               database:setex("bot:charge:"..msg.chat_id_,900,true)
               database:sadd('sudo:data:'..msg.sender_user_id_, msg.chat_id_)
@@ -5752,15 +5766,15 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
           local txt = {string.match(text, "^([!/#][Rr]em)$")}
           if not database:get("bot:enable:"..msg.chat_id_) then
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, '> Group is not in list management !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' Group is not in list management !', 1, 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, '> گروه در لیست مدیریتی ربات نیست !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' گروه در لیست مدیریتی ربات نیست\n〰〰〰〰〰〰〰〰〰〰\n⚙️Deleтed Boт Verѕιoɴ3 By@DeleteTeam', 1, 'md')
             end
           else
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, '> Group has been removed from list management !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' Group has been removed from list management !', 1, 'md')
             else
-              send(msg.chat_id_, msg.id_, 1, '> گروه از لیست مدیریتی ربات حذف شد !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' گروه از لیست مدیریتی ربات حذف شد\n〰〰〰〰〰〰〰〰〰〰\n⚙️Deleтed Boт Verѕιoɴ3 By@DeleteTeam', 1, 'md')
             end
             database:del("bot:charge:"..msg.chat_id_)
             database:del("bot:enable:"..msg.chat_id_)
@@ -5773,7 +5787,7 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
           local gp = {string.match(text, "^([Rr]em)(-%d+)$")}
           database:del("bot:charge:"..gp[2])
           local v = tonumber(bot_owner)
-          send(msg.chat_id_, msg.id_, 1, '> گروه با شناسه '..gp[2]..' از لیست مدیریتی ربات حذف شد !', 1, 'md')
+          send(msg.chat_id_, msg.id_, 1, ' گروه با شناسه '..gp[2]..' از لیست مدیریتی ربات حذف شد !', 1, 'md')
           send(v, 0, 1, "⭕️ گروهی با مشخصات زیر از لیست مدیریتی حذف شد !\n\n 🌀مشخصات فرد حذف کننده : \n 🔹آیدی فرد : "..msg.sender_user_id_.."\n\n 🌀مشخصات گروه :\n 🔸آیدی گروه : "..gp[2] , 1, 'md')
         end
         -----------------------------------------------------------------------------------------------
@@ -5810,12 +5824,12 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
             --elseif txt[2] ==
             --name =
           end
-          local text = " > اطلاعات همکار : \n\n نام : "..name.."\n\n  گروه های اضافه شده توسط این فرد :\n\n"
+          local text = "  اطلاعات همکار : \n\n نام : "..name.."\n\n  گروه های اضافه شده توسط این فرد :\n\n"
           for k,v in pairs(list) do
             text = text..'\n'..k.." : "..v.."\n"
           end
           if #list == 0 then
-            text = "> اطلاعات همکار : \n\n نام : "..name.." \n\n تا به حال گروهی به ربات اضافه نکرده است "
+            text = " اطلاعات همکار : \n\n نام : "..name.." \n\n تا به حال گروهی به ربات اضافه نکرده است "
           end
           send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
         end
@@ -5824,7 +5838,7 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
           local txt = {string.match(text, "^([!/#][Aa]ddgp) (%d+) (-%d+)$")}
           local sudo = txt[2]
           local gp = txt[3]
-          send(msg.chat_id_, msg.id_, 1, "> گروه مورد نظر با موفقیت به لیست گروه های همکار با شناسه : "..txt[2].." #اضافه شد", 1, 'html')
+          send(msg.chat_id_, msg.id_, 1, " گروه مورد نظر با موفقیت به لیست گروه های همکار با شناسه : "..txt[2].." #اضافه شد", 1, 'html')
           database:sadd('sudo:data:'..sudo, gp)
         end
         -----------------------------------------------------------------------------------------------
@@ -5832,7 +5846,7 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
           local txt = {string.match(text, "^([!/#][Rr]emgp) (%d+) (-%d+)$")}
           local hash = 'sudo:data:'..txt[2]
           local gp = txt[3]
-          send(msg.chat_id_, msg.id_, 1, "> گروه مورد نظر با موفقیت از لیست گروه های همکار با شناسه : "..txt[2].." #حذف شد", 1, 'html')
+          send(msg.chat_id_, msg.id_, 1, " گروه مورد نظر با موفقیت از لیست گروه های همکار با شناسه : "..txt[2].." #حذف شد", 1, 'html')
           database:srem(hash, gp)
         end
         -----------------------------------------------------------------------------------
@@ -5844,7 +5858,7 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
         ------------------------------------------------------------------------------------
         if text:match('^[!/#][Mm]eld(-%d+)') and is_sudo(msg) then
           local meld = {string.match(text, "^([!/#][Mm]eld)(-%d+)$")}
-          send(msg.chat_id_, msg.id_, 1, '> با موفقیت در گروه مورد نظر اعلام گردید !', 1, 'md')
+          send(msg.chat_id_, msg.id_, 1, ' با موفقیت در گروه مورد نظر اعلام گردید !', 1, 'md')
           if database:get('lang:gp:'..meld[2]) then
             send(meld[2], 0, 1, '⚠️ *Dear Manager :\n\nCredibility of this group is over !\n\nPlease visit as soon as possible to recharge the robot support* !', 1, 'md')
           else
@@ -5859,9 +5873,9 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
             if msg.chat_id_:match("^-100") then
               if tonumber(matches[2]) > 100 or tonumber(matches[2]) < 1 then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  pm = '> Please use a number greater than 1 and less than 100 !'
+                  pm = ' Please use a number greater than 1 and less than 100 !'
                 else
-                  pm = '> لطفا از عددی بزرگتر از 1 و کوچکتر از 100 استفاده کنید !'
+                  pm = ' لطفا از عددی بزرگتر از 1 و کوچکتر از 100 استفاده کنید !'
                 end
                 send(msg.chat_id_,0, 1, pm, 1, 'html')
               else
@@ -5873,17 +5887,17 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
                   limit_ = tonumber(matches[2])
                 }, delmsg, nil)
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  pm ='> *'..matches[2]..' recent message removed*!'
+                  pm =' *'..matches[2]..' recent message removed*!'
                 else
-                  pm ='> '..matches[2]..' پیام اخیر حذف شد !'
+                  pm =' '..matches[2]..' پیام اخیر حذف شد !'
                 end
                 send(msg.chat_id_,0, 1, pm, 1, 'html')
               end
             else
               if database:get('lang:gp:'..msg.chat_id_) then
-                pm ='> This is not possible in the conventional group !'
+                pm =' This is not possible in the conventional group !'
               else
-                pm ='> در گروه معمولی این امکان وجود ندارد !'
+                pm =' در گروه معمولی این امکان وجود ندارد !'
               end
               send(msg.chat_id_, msg.id_, 1, pm, 1, 'html')
             end
@@ -5893,9 +5907,9 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
             if msg.chat_id_:match("^-100") then
               if tonumber(matches[2]) > 100 or tonumber(matches[2]) < 1 then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  pm = '> Please use a number greater than 1 and less than 100 !'
+                  pm = ' Please use a number greater than 1 and less than 100 !'
                 else
-                  pm = '> لطفا از عددی بزرگتر از 1 و کوچکتر از 100 استفاده کنید !'
+                  pm = ' لطفا از عددی بزرگتر از 1 و کوچکتر از 100 استفاده کنید !'
                 end
                 send(msg.chat_id_,0, 1, pm, 1, 'html')
               else
@@ -5907,17 +5921,17 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
                   limit_ = tonumber(matches[2])
                 }, delmsg, nil)
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  pm ='> *'..matches[2]..' recent message removed*!'
+                  pm =' *'..matches[2]..' recent message removed*!'
                 else
-                  pm ='> '..matches[2]..' پیام اخیر حذف شد !'
+                  pm =' '..matches[2]..' پیام اخیر حذف شد !'
                 end
                 send(msg.chat_id_,0, 1, pm, 1, 'html')
               end
             else
               if database:get('lang:gp:'..msg.chat_id_) then
-                pm ='> This is not possible in the conventional group !'
+                pm =' This is not possible in the conventional group !'
               else
-                pm ='> در گروه معمولی این امکان وجود ندارد !'
+                pm =' در گروه معمولی این امکان وجود ندارد !'
               end
               send(msg.chat_id_, msg.id_, 1, pm, 1, 'html')
             end
@@ -5960,9 +5974,9 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
               lastname = ''
             end
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, '> Your Name : '..result.first_name_..' '..lastname..'\n> Your Username : '..username..'\n> Your ID : '..result.id_..'\n> Your Rank : '..ten, 1, 'html')
+              send(msg.chat_id_, msg.id_, 1, ' Your Name : '..result.first_name_..' '..lastname..'\n Your Username : '..username..'\n Your ID : '..result.id_..'\n Your Rank : '..ten, 1, 'html')
             else
-              send(msg.chat_id_, msg.id_, 1, '> نام شما : '..result.first_name_..' '..lastname..'\n> یوزرنیم شما : '..username..'\n> شناسه شما : '..result.id_..'\n> مقام شما : '..tfa, 1, 'html')
+              send(msg.chat_id_, msg.id_, 1, ' نام شما : '..result.first_name_..' '..lastname..'\n یوزرنیم شما : '..username..'\n شناسه شما : '..result.id_..'\n مقام شما : '..tfa, 1, 'html')
             end
           end
           getUser(msg.sender_user_id_,get_me)
@@ -5998,9 +6012,9 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
               end
             end
             if database:get('lang:gp:'..msg.chat_id_) then
-              send(msg.chat_id_, msg.id_, 1, '> Your Name : '..result.first_name_..'\n> Your Username : '..username..'\n> Your ID : '..result.id_..'\n> Your Rank : '..ten, 1, 'html')
+              send(msg.chat_id_, msg.id_, 1, ' Your Name : '..result.first_name_..'\n Your Username : '..username..'\n Your ID : '..result.id_..'\n Your Rank : '..ten, 1, 'html')
             else
-              send(msg.chat_id_, msg.id_, 1, '> نام شما : '..result.first_name_..'\n> یوزرنیم شما : '..username..'\n> شناسه شما : '..result.id_..'\n> مقام شما : '..tfa, 1, 'html')
+              send(msg.chat_id_, msg.id_, 1, ' نام شما : '..result.first_name_..'\n یوزرنیم شما : '..username..'\n شناسه شما : '..result.id_..'\n مقام شما : '..tfa, 1, 'html')
             end
           end
           getUser(msg.sender_user_id_,get_me)
@@ -6011,9 +6025,9 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
             local memb = {string.match(text, "^([!/#][Ww]hois) (.*)$")}
             function whois(extra,result,success)
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> Name :'..result.first_name_..'\n> Username : @'..result.username_..'\n> ID : '..msg.sender_user_id_, 1, 'html')
+                send(msg.chat_id_, msg.id_, 1, ' Name :'..result.first_name_..'\n Username : @'..result.username_..'\n ID : '..msg.sender_user_id_, 1, 'html')
               else
-                send(msg.chat_id_, msg.id_, 1, '> نام : '..result.first_name_..'\n> یوزرنیم : @'..result.username_..'\n> شناسه : '..msg.sender_user_id_, 1, 'html')
+                send(msg.chat_id_, msg.id_, 1, ' نام : '..result.first_name_..'\n یوزرنیم : @'..result.username_..'\n شناسه : '..msg.sender_user_id_, 1, 'html')
               end
             end
             getUser(memb[2],whois)
@@ -6022,9 +6036,9 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
             local memb = {string.match(text, "^(اطلاعات) (.*)$")}
             function whois(extra,result,success)
               if database:get('lang:gp:'..msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, '> Name :'..result.first_name_..'\n> Username : @'..result.username_..'\n> ID : '..msg.sender_user_id_, 1, 'html')
+                send(msg.chat_id_, msg.id_, 1, ' Name :'..result.first_name_..'\n Username : @'..result.username_..'\n ID : '..msg.sender_user_id_, 1, 'html')
               else
-                send(msg.chat_id_, msg.id_, 1, '> نام : '..result.first_name_..'\n> یوزرنیم : @'..result.username_..'\n> شناسه : '..msg.sender_user_id_, 1, 'html')
+                send(msg.chat_id_, msg.id_, 1, ' نام : '..result.first_name_..'\n یوزرنیم : @'..result.username_..'\n شناسه : '..msg.sender_user_id_, 1, 'html')
               end
             end
             getUser(memb[2],whois)
@@ -6034,9 +6048,9 @@ if text:match("^[!/#][Bb]roadcast (.*)$") and is_admin(msg.sender_user_id_, msg.
         if text:match("^[!/#][Gg]view$") or text:match("^میزان بازدید$") then
           database:set('bot:viewget'..msg.sender_user_id_,true)
           if database:get('lang:gp:'..msg.chat_id_) then
-            send(msg.chat_id_, msg.id_, 1, '> Plese forward your post : ', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' Plese forward your post : ', 1, 'md')
           else
-            send(msg.chat_id_, msg.id_, 1, '> لطفا مطلب خود را فروراد کنید : ', 1, 'md')
+            send(msg.chat_id_, msg.id_, 1, ' لطفا مطلب خود را فروراد کنید : ', 1, 'md')
           end
         end
         ---------------------------------------Help Bot------------------------------------------------
